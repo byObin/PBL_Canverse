@@ -30,7 +30,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         DisconnectPanel.SetActive(false);
-        //StartCoroutine("DestroyBullet");
         Spawn();
     }
 

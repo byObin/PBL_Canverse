@@ -6,13 +6,13 @@ using Photon.Realtime;
 using UnityEngine.UI;
 using Cinemachine;
 
-public class Player : MonoBehaviourPunCallbacks
+public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
     public PhotonView PV;
     public Text NickNameText;
     public float speed = 5;
 
-    bool isGround;
+    //bool isGround;
     Vector3 curPos;
 
     void Awake()
@@ -52,6 +52,7 @@ public class Player : MonoBehaviourPunCallbacks
             SpriteRenderer spriteR = gameObject.GetComponent<SpriteRenderer>();
             Sprite[] sprites = Resources.LoadAll<Sprite>("images/ghost");
             spriteR.sprite = sprites[0];
+            //NickNameText.text = "Anonymous";
         }
     }
 
@@ -68,15 +69,13 @@ public class Player : MonoBehaviourPunCallbacks
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
+        if (stream.IsWriting)   
         {
             stream.SendNext(transform.position);
-            //stream.SendNext(HealthImage.fillAmount);
         }
         else
         {
             curPos = (Vector3)stream.ReceiveNext();
-            //HealthImage.fillAmount = (float)stream.ReceiveNext();
         }
     }
 
