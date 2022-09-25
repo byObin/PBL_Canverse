@@ -10,6 +10,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public InputField NickNameInput;
     public GameObject DisconnectPanel;
     public GameObject MainPanel;
+    public PhotonView PV;
+
+    //전체채팅
+    public Text UserList;
+    public Text[] ChatLog;
+    public InputField TextInput;
+    string chatters;
 
 
     void Awake()
@@ -39,9 +46,44 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
         MainPanel.SetActive(true);
     }
-    
 
-    void Update() { if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect(); }
+    #region 채팅
+    public void Send()
+    {
+        string msg = PhotonNetwork.NickName + " : " + TextInput.text;
+        PV.RPC("ChatRPC", RpcTarget.All, PhotonNetwork.NickName + " : " + TextInput.text);
+        TextInput.text = "";
+    }
+
+    [PunRPC] // RPC는 플레이어가 속해있는 방 모든 인원에게 전달한다
+    void ChatRPC(string msg)
+    {
+        bool isInput = false;
+        for (int i = 0; i < ChatLog.Length; i++)
+        {
+            if (ChatLog[i].text == "")
+            {
+                isInput = true;
+                ChatLog[i].text = msg;
+                break;
+            }
+        }
+        if (!isInput) // 꽉차면 한칸씩 위로 올림
+        {
+            for (int i = 1; i < ChatLog.Length; i++) ChatLog[i - 1].text = ChatLog[i].text;
+            ChatLog[ChatLog.Length - 1].text = msg;
+        }
+    }
+
+   
+    #endregion
+
+
+    void Update() 
+    {
+       
+        if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect(); 
+    }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
