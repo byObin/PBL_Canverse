@@ -47,7 +47,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         MainPanel.SetActive(true);
     }
 
-    #region 채팅
+    //채팅 보내기 버튼
     public void Send()
     {
         string msg = PhotonNetwork.NickName + " : " + TextInput.text;
@@ -55,6 +55,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         TextInput.text = "";
     }
 
+    //채팅 구현
     [PunRPC] // RPC는 플레이어가 속해있는 방 모든 인원에게 전달한다
     void ChatRPC(string msg)
     {
@@ -75,13 +76,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
     }
 
-   
-    #endregion
+
+    //user list
+    void chatterUpdate()
+    {
+        chatters = "Player List\n";
+        foreach (Photon.Realtime.Player player in PhotonNetwork.PlayerList)
+        {
+            chatters += player.NickName + "\n";
+        }
+        UserList.text = chatters;
+    }
 
 
     void Update() 
     {
-       
+        chatterUpdate();
         if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect(); 
     }
 
