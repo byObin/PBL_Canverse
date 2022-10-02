@@ -64,6 +64,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             SpriteRenderer spriteR = gameObject.GetComponent<SpriteRenderer>();
             Sprite[] sprites = Resources.LoadAll<Sprite>("images/player");
             spriteR.sprite = sprites[0];
+            NickNameText.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
         }
     }
 
