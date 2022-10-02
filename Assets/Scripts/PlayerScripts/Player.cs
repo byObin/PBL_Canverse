@@ -52,7 +52,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             SpriteRenderer spriteR = gameObject.GetComponent<SpriteRenderer>();
             Sprite[] sprites = Resources.LoadAll<Sprite>("images/ghost");
             spriteR.sprite = sprites[0];
-            //NickNameText.text = "Anonymous";
+            NickNameText.text = "user";
         }
     }
 
