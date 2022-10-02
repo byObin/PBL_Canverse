@@ -17,7 +17,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public Text[] ChatLog;
     public InputField TextInput;
     string chatters;
-
+    string NickName;
 
     void Awake()
     {
@@ -53,6 +53,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         string msg = PhotonNetwork.NickName + " : " + TextInput.text;
         PV.RPC("ChatRPC", RpcTarget.All, PhotonNetwork.NickName + " : " + TextInput.text);
         TextInput.text = "";
+    }
+
+    //익명 채팅 보내기 버튼
+    public void AnoSend()
+    {
+        NickName = PhotonNetwork.LocalPlayer.NickName;
+        PhotonNetwork.LocalPlayer.NickName = "User";
+        string msg = PhotonNetwork.NickName + " : " + TextInput.text;
+        PV.RPC("ChatRPC", RpcTarget.All, PhotonNetwork.NickName + " : " + TextInput.text);
+        TextInput.text = "";
+        PhotonNetwork.LocalPlayer.NickName = NickName;
     }
 
     //채팅 구현
@@ -94,6 +105,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         chatterUpdate();
         if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect(); 
     }
+
 
     public override void OnDisconnected(DisconnectCause cause)
     {
