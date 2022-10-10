@@ -15,6 +15,9 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     //bool isGround;
     Vector3 curPos;
 
+    public bool isInAnoZone=false;
+   
+
     void Awake()
     {
         // ´Ð³×ÀÓ
@@ -53,6 +56,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             Sprite[] sprites = Resources.LoadAll<Sprite>("images/ghost");
             spriteR.sprite = sprites[0];
             NickNameText.text = "user";
+
+            isInAnoZone = true;
         }
     }
 

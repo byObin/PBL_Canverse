@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnoChatZoneScript : MonoBehaviour
+public class StudyZoneScript : MonoBehaviour
 {
     public GameObject darkPanel;
 
@@ -10,9 +10,9 @@ public class AnoChatZoneScript : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            Debug.Log("플레이어가 익명채팅구역에 들어옴");
+            Debug.Log("플레이어가 공부구역에 들어옴");
             darkPanel.SetActive(true);
-           
+
         }
     }
 
@@ -21,10 +21,9 @@ public class AnoChatZoneScript : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            Debug.Log("플레이어가 익명채팅구역에서 나감");
+            Debug.Log("플레이어가 공부구역에서 나감");
             darkPanel.SetActive(false);
 
         }
     }
-
 }
