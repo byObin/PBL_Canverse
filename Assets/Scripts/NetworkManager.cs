@@ -11,6 +11,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject DisconnectPanel;
     public GameObject MainPanel;
     public PhotonView PV;
+    public GameObject AnoChattingUI;
 
     //전체채팅
     public Text UserList;
@@ -37,14 +38,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         DisconnectPanel.SetActive(false);
+        AnoChattingUI.SetActive(false);
         Spawn();
     }
 
     
     public void Spawn()
     {
-        PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
+        // PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
+        PhotonNetwork.Instantiate("Player", new Vector3(120, 15, 0), Quaternion.identity);
         MainPanel.SetActive(true);
+
     }
 
     //채팅 보내기 버튼
@@ -60,6 +64,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         NickName = PhotonNetwork.LocalPlayer.NickName;
         PhotonNetwork.LocalPlayer.NickName = "User";
+
         string msg = PhotonNetwork.NickName + " : " + TextInput.text;
         PV.RPC("ChatRPC", RpcTarget.All, PhotonNetwork.NickName + " : " + TextInput.text);
         TextInput.text = "";

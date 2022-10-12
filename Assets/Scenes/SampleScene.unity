@@ -501,7 +501,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &212389398
 GameObject:
@@ -2451,7 +2451,7 @@ Transform:
   - {fileID: 519420032}
   - {fileID: 756060399}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &733387152
 GameObject:
@@ -10048,7 +10048,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517027707}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -838.8, y: -524.1, z: 0}
+  m_LocalPosition: {x: -839.6, y: -525.3, z: 0}
   m_LocalScale: {x: 86.671844, y: 54.71714, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10378,6 +10378,7 @@ MonoBehaviour:
   DisconnectPanel: {fileID: 1201047002}
   MainPanel: {fileID: 401189040}
   PV: {fileID: 1576524500}
+  AnoChattingUI: {fileID: 1602306395}
   UserList: {fileID: 1510139157}
   ChatLog:
   - {fileID: 1168589189}
@@ -66609,7 +66610,7 @@ RectTransform:
   - {fileID: 1201047003}
   - {fileID: 401189041}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -77311,7 +77312,7 @@ Transform:
   m_Children:
   - {fileID: 1561215582}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2057090319
 GameObject:
