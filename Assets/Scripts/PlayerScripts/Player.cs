@@ -30,6 +30,16 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             var CM = GameObject.Find("CMCamera").GetComponent<CinemachineVirtualCamera>();
             CM.Follow = transform;
             CM.LookAt = transform;
+            
+            
+            //Vector3 pos = CM.transform.position);
+            //if (pos.x < 94.84781f) pos.x = 94.84781f;
+            /*if (pos.x > 1f) pos.x = 1f;
+            if (pos.y < 0f) pos.y = 0f;
+            if (pos.y > 1f) pos.y = 1f;*/
+            //transform.position = Camera.main.ViewportToWorldPoint(pos);
+
+
         }
     }
 
