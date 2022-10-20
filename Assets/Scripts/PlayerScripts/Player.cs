@@ -65,7 +65,14 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             if (PV.IsMine)
             {
                 PV.RPC("AnoRPC", RpcTarget.All);
+
+                GameObject.Find("MainPanel").transform.Find("Else_AnoChatZone").gameObject.SetActive(true); //다크패널 활성화
+
+                GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(false); //전체채팅 ui 비활성화
+                GameObject.Find("MainPanel").transform.Find("AnoChattingUI").gameObject.SetActive(true); //익명채팅 ui 활성화
             }
+
+            
         } 
     }
 
@@ -74,7 +81,16 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (collider.gameObject.name == "AnonymousChatZone")
         {
-            if (PV.IsMine) PV.RPC("AnoExitRPC", RpcTarget.All);
+            if (PV.IsMine)
+            {
+                PV.RPC("AnoExitRPC", RpcTarget.All);
+
+                GameObject.Find("MainPanel").transform.Find("Else_AnoChatZone").gameObject.SetActive(false); //다크패널 비활성화
+
+                GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(true); //전체채팅 ui 활성화
+                GameObject.Find("MainPanel").transform.Find("AnoChattingUI").gameObject.SetActive(false); //익명채팅 ui 비활성화
+            }
+            
         }
     }
 
@@ -86,13 +102,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         Sprite[] sprites = Resources.LoadAll<Sprite>("images/ghost");
         spriteR.sprite = sprites[0];
         NickNameText.text = "user";
-
-        /*
-        GameObject.Find("MainPanel").transform.Find("Else_AnoChatZone").gameObject.SetActive(true); //다크패널 활성화
-
-        GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(false); //전체채팅 ui 비활성화
-        GameObject.Find("MainPanel").transform.Find("AnoChattingUI").gameObject.SetActive(true); //익명채팅 ui 활성화
-        */
     }
 
     [PunRPC]
@@ -103,13 +112,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         Sprite[] sprites = Resources.LoadAll<Sprite>("images/player");
         spriteR.sprite = sprites[0];
         NickNameText.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
-
-        /*
-        GameObject.Find("MainPanel").transform.Find("Else_AnoChatZone").gameObject.SetActive(false); //다크패널 비활성화
-
-        GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(true); //전체채팅 ui 활성화
-        GameObject.Find("MainPanel").transform.Find("AnoChattingUI").gameObject.SetActive(false); //익명채팅 ui 비활성화
-        */
     }
 
 

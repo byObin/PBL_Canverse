@@ -1,21 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-using Photon.Realtime;
-using UnityEngine.UI;
 
-
-public class AnoChatZoneScript : MonoBehaviourPunCallbacks
+public class AnoChatZoneScript : MonoBehaviour
 {
-    public PhotonView PV;
-
+    
     public GameObject darkPanel;
     public GameObject ChattingUI;
     public GameObject AnoChattingUI;
 
 
-    
+    /*
     [PunRPC]
     void AnoPanelRPC()
     {
@@ -35,15 +30,19 @@ public class AnoChatZoneScript : MonoBehaviourPunCallbacks
         ChattingUI.SetActive(true);    //전체채팅 ui 켬
         AnoChattingUI.SetActive(false);    //익명채팅 ui 끔
     }
-
     
-    /*
+    
+    
     //익명존 입장 시 다크패널 활성화, 익명 채팅 ui 켜짐
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.name == "AnonymousChatZone")
         {
-            if (PV.IsMine) PV.RPC("AnoPanelRPC", RpcTarget.All);
+            Debug.Log("플레이어가 익명채팅구역에 들어옴");
+            darkPanel.SetActive(true);
+
+            ChattingUI.SetActive(false);    //전체채팅 ui 끔
+            AnoChattingUI.SetActive(true);    //익명채팅 ui 켬
         }
     }
 
@@ -52,7 +51,11 @@ public class AnoChatZoneScript : MonoBehaviourPunCallbacks
     {
         if (collider.gameObject.name == "AnonymousChatZone")
         {
-            if (PV.IsMine) PV.RPC("AnoExitPanelRPC", RpcTarget.All);
+            Debug.Log("플레이어가 익명채팅구역에서 나감");
+            darkPanel.SetActive(false);
+
+            ChattingUI.SetActive(true);    //전체채팅 ui 켬
+            AnoChattingUI.SetActive(false);    //익명채팅 ui 끔
         }
     }
 

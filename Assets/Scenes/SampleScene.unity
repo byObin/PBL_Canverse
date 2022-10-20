@@ -927,7 +927,6 @@ GameObject:
   - component: {fileID: 321704010}
   - component: {fileID: 321704012}
   - component: {fileID: 321704013}
-  - component: {fileID: 321704014}
   m_Layer: 0
   m_Name: AnonymousChatZone
   m_TagString: AnonyChatZone
@@ -1014,7 +1013,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ba56f44f1d4bd4a89606baed614f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 6298047522840344616, guid: 1dff6e85a568546478697dfbd2451c85, type: 3}
   darkPanel: {fileID: 2038036067}
   ChattingUI: {fileID: 958664153}
   AnoChattingUI: {fileID: 1602306395}
@@ -1044,28 +1042,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &321704014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321704009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 2
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &323857418
 GameObject:
   m_ObjectHideFlags: 0
