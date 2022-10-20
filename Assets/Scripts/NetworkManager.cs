@@ -12,8 +12,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject MainPanel;
     public PhotonView PV;
     public GameObject AnoChattingUI;
+    public GameObject Else_GameZone;
+    public GameObject Else_StudyZone;
+    public GameObject Else_AnoChatZone;
 
-    //ÀüÃ¼Ã¤ÆÃ
+    public GameObject darkPanel;
+    public GameObject ChattingUI;
+   
+
+    //ì „ì²´ì±„íŒ…
     public Text UserList;
     public Text[] ChatLog;
     public InputField TextInput;
@@ -39,19 +46,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         DisconnectPanel.SetActive(false);
         AnoChattingUI.SetActive(false);
+       
         Spawn();
     }
 
     
     public void Spawn()
     {
-        // PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
         PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(107f, 135f), Random.Range(10f, 22f), 0), Quaternion.identity);
         MainPanel.SetActive(true);
 
+        Else_GameZone.SetActive(false);
+        Else_StudyZone.SetActive(false);
+        Else_AnoChatZone.SetActive(false);
     }
 
-    //Ã¤ÆÃ º¸³»±â ¹öÆ°
+    //ì±„íŒ… ë³´ë‚´ê¸° ë²„íŠ¼
     public void Send()
     {
         string msg = PhotonNetwork.NickName + " : " + TextInput.text;
@@ -59,7 +69,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         TextInput.text = "";
     }
 
-    //ÀÍ¸í Ã¤ÆÃ º¸³»±â ¹öÆ°
+    //ìµëª… ì±„íŒ… ë³´ë‚´ê¸° ë²„íŠ¼
+    //ì±„íŒ… ë¡œê·¸ ë³€ìˆ˜ ìˆ˜ì • í•„ìš”, punRPC ìµëª…ë²„ì „ìœ¼ë¡œ ë§Œë“¤ê¸°
     public void AnoSend()
     {
         NickName = PhotonNetwork.LocalPlayer.NickName;
@@ -71,8 +82,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LocalPlayer.NickName = NickName;
     }
 
-    //Ã¤ÆÃ ±¸Çö
-    [PunRPC] // RPC´Â ÇÃ·¹ÀÌ¾î°¡ ¼ÓÇØÀÖ´Â ¹æ ¸ğµç ÀÎ¿ø¿¡°Ô Àü´ŞÇÑ´Ù
+    //ì±„íŒ… êµ¬í˜„
+    [PunRPC] // RPCëŠ” í”Œë ˆì´ì–´ê°€ ì†í•´ìˆëŠ” ë°© ëª¨ë“  ì¸ì›ì—ê²Œ ì „ë‹¬í•œë‹¤
     void ChatRPC(string msg)
     {
         bool isInput = false;
@@ -85,7 +96,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                 break;
             }
         }
-        if (!isInput) // ²ËÂ÷¸é ÇÑÄ­¾¿ À§·Î ¿Ã¸²
+        if (!isInput) // ê½‰ì°¨ë©´ í•œì¹¸ì”© ìœ„ë¡œ ì˜¬ë¦¼
         {
             for (int i = 1; i < ChatLog.Length; i++) ChatLog[i - 1].text = ChatLog[i].text;
             ChatLog[ChatLog.Length - 1].text = msg;
@@ -108,8 +119,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     void Update() 
     {
         chatterUpdate();
-        if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect(); 
+        if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect();
+
     }
+
+   
 
 
     public override void OnDisconnected(DisconnectCause cause)
@@ -117,4 +131,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         DisconnectPanel.SetActive(true);
         MainPanel.SetActive(false);
     }
+
+ 
 }

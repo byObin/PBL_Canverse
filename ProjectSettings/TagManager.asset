@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Bullet
+  - AnonyChatZone
+  - darkPanel
+  - ChattingUI
+  - AnoChattingUI
+  - MainPanel
   layers:
   - Default
   - TransparentFX

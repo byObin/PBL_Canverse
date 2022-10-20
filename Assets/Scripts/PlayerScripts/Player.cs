@@ -16,8 +16,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     Vector3 curPos;
 
     public bool isInAnoZone=false;
-   
-
+    public Transform darkPanel;
+    
     void Awake()
     {
         // 닉네임
@@ -57,31 +57,61 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
     }
 
+    //익명존 입장 시 닉네임 USER로 변경, 유령 모습으로 바뀜
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.name == "AnonymousChatZone")
         {
-            Debug.Log("익명채팅구역에 들어감");
-            SpriteRenderer spriteR = gameObject.GetComponent<SpriteRenderer>();
-            Sprite[] sprites = Resources.LoadAll<Sprite>("images/ghost");
-            spriteR.sprite = sprites[0];
-            NickNameText.text = "user";
-
-            isInAnoZone = true;
-        }
+            if (PV.IsMine)
+            {
+                PV.RPC("AnoRPC", RpcTarget.All);
+            }
+        } 
     }
 
+    //익명존 탈출 시 원상복구
     void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.gameObject.name == "AnonymousChatZone")
         {
-            Debug.Log("익명채팅구역에서 탈출");
-            SpriteRenderer spriteR = gameObject.GetComponent<SpriteRenderer>();
-            Sprite[] sprites = Resources.LoadAll<Sprite>("images/player");
-            spriteR.sprite = sprites[0];
-            NickNameText.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
+            if (PV.IsMine) PV.RPC("AnoExitRPC", RpcTarget.All);
         }
     }
+
+    [PunRPC] 
+    void AnoRPC()
+    {
+        Debug.Log("익명채팅구역에 들어감");
+        SpriteRenderer spriteR = gameObject.GetComponent<SpriteRenderer>();
+        Sprite[] sprites = Resources.LoadAll<Sprite>("images/ghost");
+        spriteR.sprite = sprites[0];
+        NickNameText.text = "user";
+
+        /*
+        GameObject.Find("MainPanel").transform.Find("Else_AnoChatZone").gameObject.SetActive(true); //다크패널 활성화
+
+        GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(false); //전체채팅 ui 비활성화
+        GameObject.Find("MainPanel").transform.Find("AnoChattingUI").gameObject.SetActive(true); //익명채팅 ui 활성화
+        */
+    }
+
+    [PunRPC]
+    void AnoExitRPC()
+    {
+        Debug.Log("익명채팅구역에서 탈출");
+        SpriteRenderer spriteR = gameObject.GetComponent<SpriteRenderer>();
+        Sprite[] sprites = Resources.LoadAll<Sprite>("images/player");
+        spriteR.sprite = sprites[0];
+        NickNameText.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
+
+        /*
+        GameObject.Find("MainPanel").transform.Find("Else_AnoChatZone").gameObject.SetActive(false); //다크패널 비활성화
+
+        GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(true); //전체채팅 ui 활성화
+        GameObject.Find("MainPanel").transform.Find("AnoChattingUI").gameObject.SetActive(false); //익명채팅 ui 비활성화
+        */
+    }
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

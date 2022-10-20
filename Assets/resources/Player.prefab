@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6298047522840344616}
   - component: {fileID: 3672480101570901534}
   - component: {fileID: 3791244075598591717}
+  - component: {fileID: 6938302729555931057}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -138,6 +139,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 3672480101570901534}
+  - {fileID: 6938302729555931057}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -157,6 +159,7 @@ MonoBehaviour:
   NickNameText: {fileID: 611049304608320464}
   speed: 5
   isInAnoZone: 0
+  darkPanel: {fileID: 0}
 --- !u!50 &3791244075598591717
 Rigidbody2D:
   serializedVersion: 4
@@ -178,6 +181,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6938302729555931057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291641705266791636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &5344817281955003584
 GameObject:
   m_ObjectHideFlags: 0

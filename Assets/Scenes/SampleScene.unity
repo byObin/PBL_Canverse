@@ -472,40 +472,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96611040}
   m_CullTransparentMesh: 1
---- !u!1 &109990153
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 109990154}
-  m_Layer: 0
-  m_Name: Else_zone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &109990154
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109990153}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 121.9303, y: 25.2005, z: 0}
-  m_LocalScale: {x: 98.006584, y: 38.39667, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1261260081}
-  - {fileID: 444425422}
-  - {fileID: 2038036069}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &136013137
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,9 +927,10 @@ GameObject:
   - component: {fileID: 321704010}
   - component: {fileID: 321704012}
   - component: {fileID: 321704013}
+  - component: {fileID: 321704014}
   m_Layer: 0
   m_Name: AnonymousChatZone
-  m_TagString: Untagged
+  m_TagString: AnonyChatZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1047,6 +1014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ba56f44f1d4bd4a89606baed614f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PV: {fileID: 6298047522840344616, guid: 1dff6e85a568546478697dfbd2451c85, type: 3}
   darkPanel: {fileID: 2038036067}
   ChattingUI: {fileID: 958664153}
   AnoChattingUI: {fileID: 1602306395}
@@ -1076,6 +1044,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &321704014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321704009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &323857418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,7 +1608,7 @@ GameObject:
   - component: {fileID: 401189041}
   m_Layer: 5
   m_Name: MainPanel
-  m_TagString: Untagged
+  m_TagString: MainPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1642,6 +1632,9 @@ RectTransform:
   - {fileID: 1911455324}
   - {fileID: 958664157}
   - {fileID: 1602306396}
+  - {fileID: 1261260081}
+  - {fileID: 444425422}
+  - {fileID: 2038036069}
   m_Father: {fileID: 1599948238}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1761,7 +1754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &444425421
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1822,13 +1815,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444425420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00014697274, y: -0.46691808, z: 0}
-  m_LocalScale: {x: 1.0046157, y: 0.97532797, z: 1}
+  m_LocalPosition: {x: -838.0553, y: -532.7276, z: 0}
+  m_LocalScale: {x: 98.45895, y: 37.44935, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1313335212}
-  m_Father: {fileID: 109990154}
-  m_RootOrder: 1
+  m_Father: {fileID: 401189041}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &488146403
 GameObject:
@@ -3531,7 +3524,7 @@ GameObject:
   - component: {fileID: 958664154}
   m_Layer: 5
   m_Name: ChattingUI
-  m_TagString: Untagged
+  m_TagString: ChattingUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3855,7 +3848,7 @@ Transform:
   - {fileID: 1065418154}
   - {fileID: 1952138223}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1065418153
 GameObject:
@@ -4623,7 +4616,7 @@ Transform:
   - {fileID: 933354797}
   - {fileID: 325410975}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1106367002
 GameObject:
@@ -5026,7 +5019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1261260080
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5087,13 +5080,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261260079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0023692348, y: -0.4811849, z: 0}
-  m_LocalScale: {x: 1.0017543, y: 1.0055643, z: 1}
+  m_LocalPosition: {x: -837.8375, y: -533.2754, z: 0}
+  m_LocalScale: {x: 98.17851, y: 38.610325, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 689676070}
-  m_Father: {fileID: 109990154}
-  m_RootOrder: 0
+  m_Father: {fileID: 401189041}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1264004220
 GameObject:
@@ -10815,6 +10808,11 @@ MonoBehaviour:
   MainPanel: {fileID: 401189040}
   PV: {fileID: 1576524500}
   AnoChattingUI: {fileID: 1602306395}
+  Else_GameZone: {fileID: 444425420}
+  Else_StudyZone: {fileID: 1261260079}
+  Else_AnoChatZone: {fileID: 2038036067}
+  darkPanel: {fileID: 2038036067}
+  ChattingUI: {fileID: 958664153}
   UserList: {fileID: 1510139157}
   ChatLog:
   - {fileID: 1168589189}
@@ -67067,7 +67065,7 @@ GameObject:
   - component: {fileID: 1602306397}
   m_Layer: 5
   m_Name: AnoChattingUI
-  m_TagString: Untagged
+  m_TagString: AnoChattingUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77810,11 +77808,11 @@ GameObject:
   - component: {fileID: 2038036068}
   m_Layer: 0
   m_Name: Else_AnoChatZone
-  m_TagString: Untagged
+  m_TagString: darkPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &2038036068
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -77875,13 +77873,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038036067}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -838.0697, y: -514.7995, z: 0}
+  m_LocalScale: {x: 98.006584, y: 38.39667, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1561215582}
-  m_Father: {fileID: 109990154}
-  m_RootOrder: 2
+  m_Father: {fileID: 401189041}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2057090319
 GameObject:
