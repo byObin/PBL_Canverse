@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 299285117}
   - component: {fileID: 299285116}
   m_Layer: 5
-  m_Name: TextInput
+  m_Name: AnoTextInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1013,9 +1013,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ba56f44f1d4bd4a89606baed614f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  darkPanel: {fileID: 2038036067}
-  ChattingUI: {fileID: 958664153}
-  AnoChattingUI: {fileID: 1602306395}
 --- !u!61 &321704013
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1632,7 +1629,7 @@ GameObject:
   - component: {fileID: 406728685}
   - component: {fileID: 406728684}
   m_Layer: 5
-  m_Name: ChatLog
+  m_Name: AnoChatLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1892,7 +1889,7 @@ GameObject:
   - component: {fileID: 507815592}
   - component: {fileID: 507815591}
   m_Layer: 5
-  m_Name: ChatLog
+  m_Name: AnoChatLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3085,7 +3082,7 @@ GameObject:
   - component: {fileID: 834425039}
   - component: {fileID: 834425038}
   m_Layer: 5
-  m_Name: ChatLog
+  m_Name: AnoChatLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3271,7 +3268,7 @@ GameObject:
   - component: {fileID: 924007974}
   - component: {fileID: 924007973}
   m_Layer: 5
-  m_Name: ChatLog
+  m_Name: AnoChatLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4778,7 +4775,7 @@ GameObject:
   - component: {fileID: 1171639852}
   - component: {fileID: 1171639851}
   m_Layer: 5
-  m_Name: ChatLog
+  m_Name: AnoChatLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5077,7 +5074,7 @@ GameObject:
   - component: {fileID: 1264004223}
   - component: {fileID: 1264004222}
   m_Layer: 5
-  m_Name: 'ChatLog '
+  m_Name: 'AnoChatLog '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5492,7 +5489,7 @@ GameObject:
   - component: {fileID: 1369185503}
   - component: {fileID: 1369185502}
   m_Layer: 5
-  m_Name: 'ChatLog '
+  m_Name: 'AnoChatLog '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10473,7 +10470,7 @@ GameObject:
   - component: {fileID: 1526611127}
   - component: {fileID: 1526611126}
   m_Layer: 5
-  m_Name: ChatLog
+  m_Name: AnoChatLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10782,13 +10779,13 @@ MonoBehaviour:
   NickNameInput: {fileID: 1686254385}
   DisconnectPanel: {fileID: 1201047002}
   MainPanel: {fileID: 401189040}
-  PV: {fileID: 1576524500}
   AnoChattingUI: {fileID: 1602306395}
   Else_GameZone: {fileID: 444425420}
   Else_StudyZone: {fileID: 1261260079}
   Else_AnoChatZone: {fileID: 2038036067}
   darkPanel: {fileID: 2038036067}
   ChattingUI: {fileID: 958664153}
+  PV: {fileID: 1576524500}
   UserList: {fileID: 1510139157}
   ChatLog:
   - {fileID: 1168589189}
@@ -10804,6 +10801,20 @@ MonoBehaviour:
   - {fileID: 1037911744}
   - {fileID: 1928543230}
   TextInput: {fileID: 768018568}
+  AnoChatLog:
+  - {fileID: 507815592}
+  - {fileID: 1963694766}
+  - {fileID: 1589319255}
+  - {fileID: 924007974}
+  - {fileID: 1171639852}
+  - {fileID: 1526611127}
+  - {fileID: 406728685}
+  - {fileID: 1264004223}
+  - {fileID: 2057090322}
+  - {fileID: 1691667150}
+  - {fileID: 834425039}
+  - {fileID: 1369185503}
+  AnoTextInput: {fileID: 299285116}
 --- !u!114 &1576524500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10839,7 +10850,7 @@ GameObject:
   - component: {fileID: 1589319255}
   - component: {fileID: 1589319254}
   m_Layer: 5
-  m_Name: ChatLog
+  m_Name: AnoChatLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67288,7 +67299,7 @@ GameObject:
   - component: {fileID: 1691667150}
   - component: {fileID: 1691667149}
   m_Layer: 5
-  m_Name: ChatLog
+  m_Name: AnoChatLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67311,7 +67322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 277.0614, y: -363.5}
+  m_AnchoredPosition: {x: 277.0614, y: -363.50003}
   m_SizeDelta: {x: 544.1228, y: 33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1691667149
@@ -77391,7 +77402,7 @@ GameObject:
   - component: {fileID: 1963694766}
   - component: {fileID: 1963694765}
   m_Layer: 5
-  m_Name: ChatLog
+  m_Name: AnoChatLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77870,7 +77881,7 @@ GameObject:
   - component: {fileID: 2057090322}
   - component: {fileID: 2057090321}
   m_Layer: 5
-  m_Name: 'ChatLog '
+  m_Name: 'AnoChatLog '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

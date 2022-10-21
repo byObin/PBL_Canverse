@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AnoChatZoneScript : MonoBehaviour
 {
-    
+    /*
     public GameObject darkPanel;
     public GameObject ChattingUI;
     public GameObject AnoChattingUI;
 
 
-    /*
+    
     [PunRPC]
     void AnoPanelRPC()
     {
