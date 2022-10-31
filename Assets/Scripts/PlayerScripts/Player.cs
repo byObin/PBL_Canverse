@@ -10,7 +10,9 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
     public PhotonView PV;
     public Text NickNameText;
-    public float speed = 5;
+
+    [SerializeField][Range(1f, 10f)] float moveSpeed = 5f; // Inspector에서 스피드 조절 가능
+    SpriteRenderer rend; // 이미지 좌우반전용 변수 rend
 
     //bool isGround;
     Vector3 curPos;
@@ -38,20 +40,52 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             if (pos.y < 0f) pos.y = 0f;
             if (pos.y > 1f) pos.y = 1f;*/
             //transform.position = Camera.main.ViewportToWorldPoint(pos);
-
-
         }
+
+        rend = GetComponent<SpriteRenderer>(); // 좌우반전 변수 rend 초기화
     }
 
-    void Update()
+    /* 좌우반전 적용 전
+     void Update()
+     {
+         if (PV.IsMine)
+         {
+             float posX = Input.GetAxisRaw("Horizontal");    //keybord input
+             float posY = Input.GetAxisRaw("Vertical");         //keybord input
+
+             transform.Translate(new Vector2(posX, posY) * Time.deltaTime * moveSpeed);
+         }
+
+         // IsMine이 아닌 것들은 부드럽게 위치 동기화
+         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
+         else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
+     } 
+    */
+
+    // 좌우반전 적용 후
+    void Update() 
     {
+        Vector3 flipMove = Vector3.zero; // Vector3.zero는 new Vector(0, 0, 0)과 동일
+
         if (PV.IsMine)
         {
-            float posX = Input.GetAxisRaw("Horizontal");    //keybord input
-            float posY = Input.GetAxisRaw("Vertical");         //keybord input
+            float x = Input.GetAxisRaw("Horizontal"); // 좌우
 
-            transform.Translate(new Vector2(posX, posY) * Time.deltaTime * speed);
+            if (x < 0) // 왼쪽
+            {
+                rend.flipX = false; // rend 그대로
+            }
+            else if (x > 0) // 오른쪽
+            {
+                rend.flipX = true; // rend 좌우반전
+            }
+
+            float y = Input.GetAxisRaw("Vertical"); // 상하
+            flipMove = new Vector3(x, y, 0);
+
+            transform.Translate(flipMove * Time.deltaTime * moveSpeed);
         }
+
         // IsMine이 아닌 것들은 부드럽게 위치 동기화
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
         else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
