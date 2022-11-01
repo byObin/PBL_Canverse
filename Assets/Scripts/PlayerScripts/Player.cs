@@ -91,9 +91,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
     }
 
-    //익명존 입장 시 닉네임 USER로 변경, 유령 모습으로 바뀜
+    //충돌처리
     void OnTriggerEnter2D(Collider2D collider)
     {
+        //익명존 입장 시 닉네임 USER로 변경, 유령 모습으로 바뀜
         if (collider.gameObject.name == "AnonymousChatZone")
         {
             if (PV.IsMine)
@@ -105,14 +106,33 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(false); //전체채팅 ui 비활성화
                 GameObject.Find("MainPanel").transform.Find("AnoChattingUI").gameObject.SetActive(true); //익명채팅 ui 활성화
             }
+        }
 
-            
-        } 
+        //게임존 -> 다크패널
+        if (collider.gameObject.name == "GameZone")
+        {
+            if (PV.IsMine)
+            {
+                Debug.Log("플레이어가 게임구역에 들어옴");
+                GameObject.Find("MainPanel").transform.Find("Else_GameZone").gameObject.SetActive(true); //다크패널 활성화
+            }
+        }
+
+        //공부존 -> 다크패널
+        if (collider.gameObject.name == "StudyZone")
+        {
+            if (PV.IsMine)
+            {
+                Debug.Log("플레이어가 공부구역에 들어옴");
+                GameObject.Find("MainPanel").transform.Find("Else_StudyZone").gameObject.SetActive(true); //다크패널 활성화
+            }
+        }
     }
 
-    //익명존 탈출 시 원상복구
+    //충돌처리
     void OnTriggerExit2D(Collider2D collider)
     {
+        //익명존 탈출 시 원상복구
         if (collider.gameObject.name == "AnonymousChatZone")
         {
             if (PV.IsMine)
@@ -124,7 +144,26 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(true); //전체채팅 ui 활성화
                 GameObject.Find("MainPanel").transform.Find("AnoChattingUI").gameObject.SetActive(false); //익명채팅 ui 비활성화
             }
-            
+        }
+
+        //게임존 벗어나면 다크패널 비활성화
+        if (collider.gameObject.name == "GameZone")
+        {
+            if (PV.IsMine)
+            {
+                Debug.Log("플레이어가 게임구역에서 나감");
+                GameObject.Find("MainPanel").transform.Find("Else_GameZone").gameObject.SetActive(false); //다크패널 비활성화
+            }
+        }
+
+        //공부존 벗어나면 다크패널 비활성화
+        if (collider.gameObject.name == "StudyZone")
+        {
+            if (PV.IsMine)
+            {
+                Debug.Log("플레이어가 공부 구역에서 나감");
+                GameObject.Find("MainPanel").transform.Find("Else_StudyZone").gameObject.SetActive(false); //다크패널 비활성화
+            }
         }
     }
 

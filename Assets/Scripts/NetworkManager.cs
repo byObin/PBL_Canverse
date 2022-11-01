@@ -69,7 +69,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Else_AnoChatZone.SetActive(false);
     }
 
-    //채팅 보내기 버튼
+    //전체 채팅 보내기 버튼
     public void Send()
     {
         string msg = PhotonNetwork.NickName + " : " + TextInput.text;
@@ -77,19 +77,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         TextInput.text = "";
     }
 
-    //익명 채팅 보내기 버튼
-    public void AnoSend()
-    {
-        NickName = PhotonNetwork.LocalPlayer.NickName;  //원래 닉네임 저장
-        PhotonNetwork.LocalPlayer.NickName = "User";    //닉네임 user로 변경
-
-        string msg = PhotonNetwork.NickName + " : " + AnoTextInput.text;
-        PV.RPC("AnoChatRPC", RpcTarget.All, PhotonNetwork.NickName + " : " + AnoTextInput.text);
-        AnoTextInput.text = "";
-        PhotonNetwork.LocalPlayer.NickName = NickName;
-    }
-
-    //채팅 구현
+    //전체 채팅 구현
     [PunRPC] 
     void ChatRPC(string msg)
     {
@@ -108,6 +96,18 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             for (int i = 1; i < ChatLog.Length; i++) ChatLog[i - 1].text = ChatLog[i].text;
             ChatLog[ChatLog.Length - 1].text = msg;
         }
+    }
+
+    //익명 채팅 보내기 버튼
+    public void AnoSend()
+    {
+        NickName = PhotonNetwork.LocalPlayer.NickName;  //원래 닉네임 저장
+        PhotonNetwork.LocalPlayer.NickName = "User";    //닉네임 user로 변경
+
+        string msg = PhotonNetwork.NickName + " : " + AnoTextInput.text;
+        PV.RPC("AnoChatRPC", RpcTarget.All, PhotonNetwork.NickName + " : " + AnoTextInput.text);
+        AnoTextInput.text = "";
+        PhotonNetwork.LocalPlayer.NickName = NickName;
     }
 
     //익명 채팅 구현
@@ -153,7 +153,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
    
 
-
+    //접속 끊음
     public override void OnDisconnected(DisconnectCause cause)
     {
         DisconnectPanel.SetActive(true);

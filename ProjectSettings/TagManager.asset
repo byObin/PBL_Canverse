@@ -11,6 +11,8 @@ TagManager:
   - ChattingUI
   - AnoChattingUI
   - MainPanel
+  - GameZone
+  - StudyZone
   layers:
   - Default
   - TransparentFX
