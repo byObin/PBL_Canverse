@@ -127,6 +127,16 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 GameObject.Find("MainPanel").transform.Find("Else_StudyZone").gameObject.SetActive(true); //다크패널 활성화
             }
         }
+
+        //상점 -> 다크패널
+        if (collider.gameObject.name == "StoreZone")
+        {
+            if (PV.IsMine)
+            {
+                Debug.Log("플레이어가 상점에 들어옴");
+                GameObject.Find("MainPanel").transform.Find("Else_StoreZone").gameObject.SetActive(true); //다크패널 활성화
+            }
+        }
     }
 
     //충돌처리
@@ -165,6 +175,16 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 GameObject.Find("MainPanel").transform.Find("Else_StudyZone").gameObject.SetActive(false); //다크패널 비활성화
             }
         }
+
+        //상점 벗어나면 다크패널 비활성화
+        if (collider.gameObject.name == "StoreZone")
+        {
+            if (PV.IsMine)
+            {
+                Debug.Log("플레이어가 상점 구역에서 나감");
+                GameObject.Find("MainPanel").transform.Find("Else_StoreZone").gameObject.SetActive(false); //다크패널 비활성화
+            }
+        }
     }
 
     [PunRPC] 
@@ -182,7 +202,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         Debug.Log("익명채팅구역에서 탈출");
         SpriteRenderer spriteR = gameObject.GetComponent<SpriteRenderer>();
-        Sprite[] sprites = Resources.LoadAll<Sprite>("images/player");
+        Sprite[] sprites = Resources.LoadAll<Sprite>("images/purple_origin");
         spriteR.sprite = sprites[0];
         NickNameText.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
     }
