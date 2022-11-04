@@ -11,6 +11,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject DisconnectPanel;
     public GameObject MainPanel;
     public GameObject AnoChattingUI;
+    public GameObject ButtonUI;
 
     //darkPanel
     public GameObject Else_GameZone;
@@ -53,7 +54,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         DisconnectPanel.SetActive(false);
         AnoChattingUI.SetActive(false);
-       
+        ButtonUI.SetActive(true);
+
         Spawn();
     }
 
@@ -151,7 +153,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     }
 
-   
+    public void Disconnect()
+    {
+        PhotonNetwork.Disconnect();
+    }
 
     //접속 끊음
     public override void OnDisconnected(DisconnectCause cause)
