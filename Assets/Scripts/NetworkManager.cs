@@ -17,6 +17,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject AnoChattingUI;
     public GameObject ButtonUI;
 
+    public GameObject OXGameUI;
+
     //darkPanel
     public GameObject Else_GameZone;
     public GameObject Else_StudyZone;
@@ -55,11 +57,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 8 }, null);
     }
 
+    //시작할 때
     public override void OnJoinedRoom()
     {
         DisconnectPanel.SetActive(false);
         AnoChattingUI.SetActive(false);
-
+       
+        OXGameUI.SetActive(false);
         ButtonUI.SetActive(true);
         Spawn();
     }
@@ -77,7 +81,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Else_StoreZone.SetActive(false);
     }
 
-   
+    public void ExitOXGame()
+    {
+        OXGameUI.SetActive(false);
+
+        ButtonUI.SetActive(true);
+        ChattingUI.SetActive(true);
+    }
 
     //전체 채팅 보내기 버튼
     public void Send()

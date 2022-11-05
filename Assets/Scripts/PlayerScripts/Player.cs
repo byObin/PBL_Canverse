@@ -118,7 +118,18 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
 
-      
+        //ox게임존 들어갈 때
+        if (collider.gameObject.name == "OXGameZone")
+        {
+            if (PV.IsMine)
+            {
+                GameObject.Find("MainPanel").transform.Find("OXGameUI").gameObject.SetActive(true); //OX 게임 UI 활성화
+
+                GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(false); //전체채팅 ui 비활성화
+                GameObject.Find("MainPanel").transform.Find("ButtonUI").gameObject.SetActive(false); //버튼 ui 비활성화
+            }
+        }
+
 
         //공부존 -> 다크패널
         if (collider.gameObject.name == "StudyZone")
@@ -165,10 +176,27 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             {
                 Debug.Log("플레이어가 게임구역에서 나감");
                 GameObject.Find("MainPanel").transform.Find("Else_GameZone").gameObject.SetActive(false); //다크패널 비활성화
+                
+                GameObject.Find("MainPanel").transform.Find("OXGameUI").gameObject.SetActive(false); //OXGame UI 비활성화
+
+                GameObject.Find("MainPanel").transform.Find("ButtonUI").gameObject.SetActive(true); //버튼 ui 활성화
+                GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(true); //채팅 ui 활성화
+                
             }
         }
 
-      
+        //OX 게임존 벗어나면 원상복구
+        if (collider.gameObject.name == "OXGameZone")
+        {
+            if (PV.IsMine)
+            {
+                GameObject.Find("MainPanel").transform.Find("OXGameUI").gameObject.SetActive(false); //OX 게임 UI 비활성화
+
+                GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(true); //전체채팅 ui 활성화
+                GameObject.Find("MainPanel").transform.Find("ButtonUI").gameObject.SetActive(true); //버튼 ui 활성화
+            }
+        }
+
 
         //공부존 벗어나면 다크패널 비활성화
         if (collider.gameObject.name == "StudyZone")
