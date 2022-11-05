@@ -118,6 +118,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
 
+      
+
         //공부존 -> 다크패널
         if (collider.gameObject.name == "StudyZone")
         {
@@ -165,6 +167,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 GameObject.Find("MainPanel").transform.Find("Else_GameZone").gameObject.SetActive(false); //다크패널 비활성화
             }
         }
+
+      
 
         //공부존 벗어나면 다크패널 비활성화
         if (collider.gameObject.name == "StudyZone")

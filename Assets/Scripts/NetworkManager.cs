@@ -8,8 +8,12 @@ using UnityEngine.UI;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public InputField NickNameInput;
+
+    //패널
     public GameObject DisconnectPanel;
     public GameObject MainPanel;
+
+    //ui
     public GameObject AnoChattingUI;
     public GameObject ButtonUI;
 
@@ -17,6 +21,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject Else_GameZone;
     public GameObject Else_StudyZone;
     public GameObject Else_AnoChatZone;
+    public GameObject Else_StoreZone;
 
     //tag
     public GameObject darkPanel;
@@ -54,8 +59,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         DisconnectPanel.SetActive(false);
         AnoChattingUI.SetActive(false);
-        ButtonUI.SetActive(true);
 
+        ButtonUI.SetActive(true);
         Spawn();
     }
 
@@ -69,7 +74,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Else_GameZone.SetActive(false);
         Else_StudyZone.SetActive(false);
         Else_AnoChatZone.SetActive(false);
+        Else_StoreZone.SetActive(false);
     }
+
+   
 
     //전체 채팅 보내기 버튼
     public void Send()
