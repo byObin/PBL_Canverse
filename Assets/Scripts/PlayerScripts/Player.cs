@@ -11,7 +11,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public PhotonView PV;
     public Text NickNameText;
 
-    [SerializeField][Range(1f, 10f)] float moveSpeed = 5f; // Inspector에서 스피드 조절 가능
+    [SerializeField][Range(1f, 10f)] float moveSpeed = 10f; // Inspector에서 스피드 조절 가능
     SpriteRenderer rend; // 이미지 좌우반전용 변수 rend
 
     //bool isGround;
