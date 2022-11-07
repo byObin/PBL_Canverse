@@ -25,11 +25,17 @@ public class QuizManager : MonoBehaviour
 
     void makeQuestion()
     {
-        currentQuestion = Random.Range(0, qna.Count);
-        QuestionText.text = qna[currentQuestion].Question;
+        if (qna.Count > 0)
+        {
+            currentQuestion = Random.Range(0, qna.Count);
+            QuestionText.text = qna[currentQuestion].Question;
+            setAnswer();
+        }
+        else
+        {
+            Debug.Log("문제를 다 풀었습니다.");
+        }
 
-        setAnswer();
-       
     }
 
     void setAnswer()
