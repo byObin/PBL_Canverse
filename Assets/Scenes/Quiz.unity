@@ -567,8 +567,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 310, y: -50}
-  m_SizeDelta: {x: 500, y: 100}
+  m_AnchoredPosition: {x: 340, y: -100}
+  m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &431922584
 MonoBehaviour:
@@ -732,8 +732,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -310, y: -50}
-  m_SizeDelta: {x: 500, y: 100}
+  m_AnchoredPosition: {x: -340, y: -100}
+  m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &439884534
 MonoBehaviour:
@@ -897,8 +897,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -310, y: -240}
-  m_SizeDelta: {x: 500, y: 100}
+  m_AnchoredPosition: {x: -340, y: -355}
+  m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &704049123
 MonoBehaviour:
@@ -1053,13 +1053,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   qna:
-  - Question: "\uD074\uB77C\uC6B0\uB4DC \uC885\uB958\uB85C \uC798\uBABB\uB41C \uAC83\uC740?"
-    Answers:
-    - IaaS
-    - PaaS
-    - SaaS
-    - LaaS
-    CorrectAnswer: 4
   - Question: "\uC11C\uC6B8\uC5EC\uC790\uB300\uD559\uAD50 \uAC74\uBB3C\uC774 \uC544\uB2CC
       \uAC83\uC740?"
     Answers:
@@ -1068,20 +1061,23 @@ MonoBehaviour:
     - "\uC81C3\uACFC\uD559\uAD00"
     - "\uC81C1\uACFC\uD559\uAD00"
     CorrectAnswer: 3
-  - Question: "\uB300\uD55C\uBBFC\uAD6D\uC740 \uC5B4\uB290 \uB300\uB959\uC778\uAC00\uC694?"
+  - Question: "ISMS\uC5D0 \uB300\uD55C \uC124\uBA85\uC73C\uB85C \uD2C0\uB9B0 \uAC83\uC740?"
     Answers:
-    - "\uC720\uB7FD"
-    - "\uC544\uC2DC\uC544"
-    - "\uC544\uD504\uB9AC\uCE74"
-    - "\uC624\uC138\uC544\uB2C8\uC544"
-    CorrectAnswer: 2
+    - "\uC815\uBCF4\uBCF4\uD638 \uC911\uC2EC\uC73C\uB85C \uC778\uC99D\uD558\uB294
+      \uACBD\uC6B0\uC5D0 \uC0AC\uC6A9\uD55C\uB2E4."
+    - "\uC815\uBCF4\uBCF4\uD638  \uAD00\uB9AC\uCCB4\uACC4 \uC778\uC99D\uC774\uB2E4."
+    - "\uB300\uC0C1\uC73C\uB85C \uAC1C\uC778\uC815\uBCF4\uB97C\_\uBCF4\uC720\uD558\uC9C0\_\uC54A\uAC70\uB098\_\uAC1C\uC778\uC815\uBCF4\_\uD750\uB984\uC758\_\uBCF4\uD638\uAC00\_\uBD88\uD544\uC694\uD55C\_\uC870\uC9C1\uC774
+      \uC788\uB2E4."
+    - "\uC815\uBCF4\uBCF4\uD638 \uBC0F \uAC1C\uC778\uC815\uBCF4\uBCF4\uD638 \uAD00\uB9AC\uCCB4\uACC4
+      \uC778\uC99D\uC774\uB2E4."
+    CorrectAnswer: 4
   options:
   - {fileID: 439884532}
   - {fileID: 431922582}
   - {fileID: 704049121}
   - {fileID: 1059779114}
   currentQuestion: 0
-  QuestionText: {fileID: 0}
+  QuestionText: {fileID: 119093140}
 --- !u!4 &1028823305
 Transform:
   m_ObjectHideFlags: 0
@@ -1136,8 +1132,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 310, y: -240}
-  m_SizeDelta: {x: 500, y: 100}
+  m_AnchoredPosition: {x: 340, y: -355}
+  m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059779116
 MonoBehaviour:
