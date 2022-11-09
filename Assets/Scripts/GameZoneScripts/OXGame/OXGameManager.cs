@@ -24,6 +24,8 @@ public class OXGameManager : MonoBehaviour
     {
         totalQuestions = QnA.Count;
         GoPanel.SetActive(false);
+
+        //문제 생성
         generateQuestion();
     }
 
@@ -61,6 +63,7 @@ public class OXGameManager : MonoBehaviour
         generateQuestion();
     }
 
+    // 보기 설정
     void SetAnswers()
     {
         for (int i = 0; i < optioins.Length; i++)
@@ -75,12 +78,15 @@ public class OXGameManager : MonoBehaviour
         }
     }
 
+    // 문제 만들어줌
     void generateQuestion()
     {
 
         if (QnA.Count > 0)
         {
+            // 0 ~ QnA 중 랜덤으로 currentQuestion에 입력
             currentQuestion = Random.Range(0, QnA.Count);
+            // currentQuestion(현재 문제)이 QuestionText에 나타남
             QuestionText.text = QnA[currentQuestion].Question;
             SetAnswers();
         }
