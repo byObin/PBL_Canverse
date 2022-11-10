@@ -18,6 +18,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject ButtonUI;
 
     public GameObject OXGameUI;
+    public GameObject GoPanel;
 
     //darkPanel
     public GameObject Else_GameZone;
@@ -84,6 +85,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void ExitOXGame()
     {
         OXGameUI.SetActive(false);
+        GoPanel.SetActive(false);
 
         ButtonUI.SetActive(true);
         ChattingUI.SetActive(true);

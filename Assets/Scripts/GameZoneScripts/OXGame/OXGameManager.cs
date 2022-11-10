@@ -33,12 +33,14 @@ public class OXGameManager : MonoBehaviour
     public void retry()
     {
         GoPanel.SetActive(false);
-        OXGameUI.SetActive(true);
         Questionpanel.SetActive(true);
         
-        score = 0; 
-        totalQuestions = QnA.Count;
         
+        QnA.Clear();
+        totalQuestions = QnA.Count;
+        score = 0;
+
+        generateQuestion();
     }
 
     // 게임 종료(문제 다 풀었을 떄)

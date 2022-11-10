@@ -123,8 +123,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (PV.IsMine)
             {
-                GameObject.Find("MainPanel").transform.Find("OXGameUI").gameObject.SetActive(true); //OX 게임 UI 활성화
-                
+                Debug.Log("플레이어가 OX 게임구역에 들어옴");
+                GameObject.Find("OXGameZone").transform.Find("OXGameUI").gameObject.SetActive(true); //OX 게임 UI 활성화
+                GameObject.Find("OXGameUI").transform.Find("QuestionPanel").gameObject.SetActive(true); 
+
 
                 GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(false); //전체채팅 ui 비활성화
                 GameObject.Find("MainPanel").transform.Find("ButtonUI").gameObject.SetActive(false); //버튼 ui 비활성화
@@ -191,8 +193,9 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (PV.IsMine)
             {
-                GameObject.Find("MainPanel").transform.Find("OXGameUI").gameObject.SetActive(false); //OX 게임 UI 비활성화
-               
+                Debug.Log("플레이어가 OX 게임구역을 나감");
+                
+
                 GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(true); //전체채팅 ui 활성화
                 GameObject.Find("MainPanel").transform.Find("ButtonUI").gameObject.SetActive(true); //버튼 ui 활성화
             }
