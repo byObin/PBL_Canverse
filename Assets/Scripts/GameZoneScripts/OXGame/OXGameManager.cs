@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class OXGameManager : MonoBehaviour
 {
     public List<QuestionAndAnswers> QnA;
+    public List<QuestionAndAnswers> copQnA;
+
     public GameObject[] optioins;
     public int currentQuestion;
 
@@ -20,8 +23,15 @@ public class OXGameManager : MonoBehaviour
     int totalQuestions = 0;
     public int score;
 
+
+ 
+
     private void Start()
     {
+        List<QuestionAndAnswers> copQnA = QnA.ToList();
+        Debug.Log(QnA.Count);
+        Debug.Log(copQnA.Count);
+
         totalQuestions = QnA.Count;
         GoPanel.SetActive(false);
         
@@ -33,11 +43,11 @@ public class OXGameManager : MonoBehaviour
     public void retry()
     {
         GoPanel.SetActive(false);
-        Questionpanel.SetActive(true);
-        
-        
-        QnA.Clear();
-        totalQuestions = QnA.Count;
+        //Questionpanel.SetActive(true);
+
+
+        List<QuestionAndAnswers> QnA = copQnA.ToList();
+        QnA.Count = 3;
         score = 0;
 
         generateQuestion();
@@ -49,17 +59,20 @@ public class OXGameManager : MonoBehaviour
         Questionpanel.SetActive(false);
         GoPanel.SetActive(true);
         ScoreText.text = score + "/" + totalQuestions;
+
     }
 
     public void correct()
     {
         score += 1;
+        
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
     }
 
     public void wrong()
     {
+        
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
     }
