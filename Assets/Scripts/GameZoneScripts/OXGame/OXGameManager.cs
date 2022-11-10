@@ -24,7 +24,7 @@ public class OXGameManager : MonoBehaviour
     {
         totalQuestions = QnA.Count;
         GoPanel.SetActive(false);
-
+        
         //문제 생성
         generateQuestion();
     }
@@ -32,16 +32,16 @@ public class OXGameManager : MonoBehaviour
    
     public void retry()
     {
-        Questionpanel.SetActive(true);
         GoPanel.SetActive(false);
-        OXGameUI.SetActive(false);
-
-        //초기화
+        OXGameUI.SetActive(true);
+        Questionpanel.SetActive(true);
+        
+        score = 0; 
         totalQuestions = QnA.Count;
-        score = 0;
+        
     }
 
-
+    // 게임 종료(문제 다 풀었을 떄)
     void GameOver()
     {
         Questionpanel.SetActive(false);
@@ -58,7 +58,6 @@ public class OXGameManager : MonoBehaviour
 
     public void wrong()
     {
-
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
     }
@@ -81,7 +80,7 @@ public class OXGameManager : MonoBehaviour
     // 문제 만들어줌
     void generateQuestion()
     {
-
+        // 문제 진행
         if (QnA.Count > 0)
         {
             // 0 ~ QnA 중 랜덤으로 currentQuestion에 입력
@@ -90,7 +89,7 @@ public class OXGameManager : MonoBehaviour
             QuestionText.text = QnA[currentQuestion].Question;
             SetAnswers();
         }
-        else
+        else        //문제 다 풀었을 경우
         {
             Debug.Log("Out of Questions");
             GameOver();

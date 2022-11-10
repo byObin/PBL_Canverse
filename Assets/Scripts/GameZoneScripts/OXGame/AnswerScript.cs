@@ -9,12 +9,12 @@ public class AnswerScript : MonoBehaviour
 
     public void Answer()
     {
-        if(isCorrect)
+        if(isCorrect)   //참일 경우
         {
             Debug.Log("정답");
             oxgameManager.correct();
         }
-        else
+        else    
         {
             Debug.Log("오답");
             oxgameManager.wrong();
