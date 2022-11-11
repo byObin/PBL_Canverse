@@ -8,7 +8,6 @@ using System.Linq;
 public class OXGameManager : MonoBehaviour
 {
     public List<QuestionAndAnswers> QnA;
-    public List<QuestionAndAnswers> copQnA;
 
     public GameObject[] optioins;
     public int currentQuestion;
@@ -28,10 +27,7 @@ public class OXGameManager : MonoBehaviour
 
     private void Start()
     {
-        List<QuestionAndAnswers> copQnA = QnA.ToList();
-        Debug.Log(QnA.Count);
-        Debug.Log(copQnA.Count);
-
+       
         totalQuestions = QnA.Count;
         GoPanel.SetActive(false);
         
@@ -43,12 +39,7 @@ public class OXGameManager : MonoBehaviour
     public void retry()
     {
         GoPanel.SetActive(false);
-        //Questionpanel.SetActive(true);
-
-
-        List<QuestionAndAnswers> QnA = copQnA.ToList();
-        QnA.Count = 3;
-        score = 0;
+        Questionpanel.SetActive(true);
 
         generateQuestion();
     }
@@ -62,17 +53,17 @@ public class OXGameManager : MonoBehaviour
 
     }
 
+    //맞았을 때
     public void correct()
     {
         score += 1;
-        
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
     }
-
+    
+    //틀렸을 때
     public void wrong()
     {
-        
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
     }
