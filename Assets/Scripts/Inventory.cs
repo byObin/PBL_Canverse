@@ -38,23 +38,25 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
         slots = tf.GetComponentsInChildren<InventorySlot>(); // 부모인 Grid Slot 내의 슬롯들이 저장됨?
     }
 
-    public void ShowTab()
-    {
-        RemoveSlot(); // 일단, 보이지 않게 하고
-        SelectedTab(); // 탭이 빛나도록 함. 아래 구현되어 있음 ~!
-
-    }
-
     public void RemoveSlot() // 슬롯들이 잠깐 보이지 않도록 ..?
     {
-        for(int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
             slots[i].RemoveItem(); // 슬롯 내 내용들이 안 보이도록 
             slots[i].gameObject.SetActive(false);
         }
 
-    }
+    } // 인벤토리 슬롯 초기화
 
+
+
+
+    public void ShowTab()
+    {
+        RemoveSlot(); // 일단, 보이지 않게 하고
+        SelectedTab(); // 탭이 빛나도록 함. 아래 구현되어 있음 ~!
+
+    } // 탭 활성화하여 보여주기
     public void SelectedTab()
     {
         StopAllCoroutines(); // 기존에 돌던 코루틴들 종료
@@ -67,8 +69,7 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
         Description_Text.text = tabDescription[selectedTab]; // 0번으로 초기화 했었음. 소모품 탭의 설명이 출력됨.
         StartCoroutine(SelectedTabEffectCoroutine()); // 선택된 것만 빛나도록 하는 코루틴 실행
 
-    }
-
+    } // 선택된 탭을 제외하고 다른 모든 탭의 컬러 알파값을 0으로 조정
     IEnumerator SelectedTabEffectCoroutine()
     {
         while(tabActivated) // 탭이 활성화되어 있다면, 계속 빛나도록
@@ -91,7 +92,105 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
             yield return new WaitForSeconds(0.3f); // 걍
 
         }
-    }
+    } // 선택된 탭 반짝임 효과
+
+
+
+
+    public void ShowItem()
+    {
+        inventoryTabList.Clear(); // 기존 꺼는 초기화
+        RemoveSlot(); // 슬롯도 초기화?
+        selectedItem = 0;
+
+        switch (selectedTab) // 고른 탭에 따라 리스트에 다른 게 들어가도록?
+        {
+            case 0: // 소모품 탭일 경우
+                for(int i = 0; i < inventoryItemList.Count; i++)
+                {
+                    if (Item.ItemType.Use == inventoryItemList[i].itemType) // 소모품일 경우
+                        inventoryTabList.Add(inventoryItemList[i]); // 추가해줌.
+                }
+                break;
+            case 1: // 장비 탭일 경우
+                for (int i = 0; i < inventoryItemList.Count; i++)
+                {
+                    if (Item.ItemType.Equip == inventoryItemList[i].itemType) // 소모품일 경우
+                        inventoryTabList.Add(inventoryItemList[i]); // 추가해줌.
+                }
+                break;
+            case 2: // 퀘스트 탭일 경우
+                for (int i = 0; i < inventoryItemList.Count; i++)
+                {
+                    if (Item.ItemType.Quest == inventoryItemList[i].itemType) // 소모품일 경우
+                        inventoryTabList.Add(inventoryItemList[i]); // 추가해줌.
+                }
+                break;
+            case 3: // 기타 탭일 경우
+                for (int i = 0; i < inventoryItemList.Count; i++)
+                {
+                    if (Item.ItemType.ETC == inventoryItemList[i].itemType) // 소모품일 경우
+                        inventoryTabList.Add(inventoryItemList[i]); // 추가해줌.
+                }
+                break;
+
+
+
+        } // 탭에 따른 아이템 분류, 그것을 인벤토리 탭 리스트에 추가
+
+        // 인벤토리 탭 리스트의 내용을, 인벤토리 슬롯에 추가
+        for (int i = 0; i < inventoryTabList.Count; i++)
+        {
+            slots[i].gameObject.SetActive(true); // 일단 활성화시키고,
+            slots[i].Additem(inventoryTabList[i]); // 넣어주기
+
+        }
+
+        SelectedItem(); // 선택된 것만 빛날 수 있도록
+    } // 아이템 활성화 (inventoryTabList에 조건에 맞는 아이템들만 넣어주고, 인벤토리 슬롯에 출력)
+    public void SelectedItem()
+    {
+        StopAllCoroutines(); // 기존의 모든 코루틴을 정지
+
+        if (inventoryTabList.Count > 0)
+        {
+            Color color = slots[0].selected_Item.GetComponent<Image>().color;
+            color.a = 0f;
+            for (int i = 0; i < inventoryTabList.Count; i++)
+                slots[i].selected_Item.GetComponent<Image>().color = color;
+            Description_Text.text = inventoryTabList[selectedItem].itemDescription; // 있다면 설명 넣어줌
+            StartCoroutine(SelectedItemEffectCoroutine());
+
+        }
+        else
+            Description_Text.text = "해당 타입의 아이템을 소유하고 있지 않습니당.";
+    } // 선택된 아이템을 제외하고 다른 모든 탭의 컬러 알파값을 0으로 조정
+    IEnumerator SelectedItemEffectCoroutine()
+    {
+        while (itemActivated) // 아이템이 활성화되어 있다면, 계속 빛나도록
+        {
+            Color color = slots[0].GetComponent<Image>().color;
+            while (color.a < 0.5f) // 반투명으로 
+            {
+                color.a += 0.03f; // 빠르게 빛나도록
+                slots[selectedItem].selected_Item.GetComponent<Image>().color = color; // 점점 올라가다가 반 넘어가면 탈출
+                yield return waitTime; // 설정한 시간만큼 기다리도록 ?????
+            }
+
+            while (color.a < 0f) // 다시 반대로
+            {
+                color.a -= 0.03f; // 빠르게 빛나도록
+                slots[selectedItem].selected_Item.GetComponent<Image>().color = color;
+                yield return waitTime; // 설정한 시간만큼 기다리도록 ?????
+            }
+
+            yield return new WaitForSeconds(0.3f); // 걍
+
+        }
+    } // 선택된 아이템이 빛나도록
+
+
+
 
     // Update is called once per frame
     void Update() {
@@ -125,6 +224,44 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
 
             }
 
+            if(activated) // 인벤토리가 활성화되었고
+            {
+                if(tabActivated) // 탭도 활성화된 경우에
+                {
+                    if(Input.GetKeyDown(KeyCode.RightArrow)) // 오른쪽 방향키를 누르는데,
+                    {
+                        if (selectedTab < selectedTabImages.Length - 1)
+                            selectedTab++;
+                        else
+                            selectedTab = 0; // 마지막에는 다시 0번 탭으로 초기화
+
+                        SelectedTab(); // 탭이 바뀌었으니까 함수도 호출
+                    }
+                    else if (Input.GetKeyDown(KeyCode.RightArrow)) // 왼쪽 방향키를 누르는데,
+                    {
+                        if (selectedTab > 0)
+                            selectedTab--;
+                        else
+                            selectedTab = selectedTabImages.Length - 1;
+
+                        SelectedTab(); // 탭이 바뀌었으니까 함수도 호출
+                    }
+                    else if(Input.GetKeyDown(KeyCode.Z)) // Z키를 누르는 경우
+                    {
+                        Color color = selectedTabImages[selectedTab].GetComponent<Image>().color;
+                        color.a = 0.25f;
+                        selectedTabImages[selectedTab].GetComponent<Image>().color = color; // 탭이 짙어지도록
+
+                        itemActivated = true;
+                        tabActivated = false;
+                        preventExec = true; // 중복 방지를 위해, 이게 true일 때 키 입력이 되지 않도록 (?)
+
+                        ShowItem();
+                    }
+
+                }
+
+            }
         }
         
     }
