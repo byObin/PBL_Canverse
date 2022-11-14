@@ -19,6 +19,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public GameObject OXGameUI;
     public GameObject GoPanel;
+    public GameObject Inventory;
 
     //darkPanel
     public GameObject Else_GameZone;
@@ -63,7 +64,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         DisconnectPanel.SetActive(false);
         AnoChattingUI.SetActive(false);
-       
+
+        Inventory.SetActive(false); 
         OXGameUI.SetActive(false);
         ButtonUI.SetActive(true);
         Spawn();
@@ -176,6 +178,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void Disconnect()
     {
         PhotonNetwork.Disconnect();
+    }
+
+    public void ShowInventory()
+    {
+        Inventory.SetActive(true);
+    }
+
+    public void CloseInventory()
+    {
+        Inventory.SetActive(false);
     }
 
     //접속 끊음
