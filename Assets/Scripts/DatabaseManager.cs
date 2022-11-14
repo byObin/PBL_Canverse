@@ -33,7 +33,11 @@ public class DatabaseManager : MonoBehaviour // 싱글톤화가 되어 있어야 함.
     {
         // 아이템을 직접 구현하고, 아이템을 DB에 추가해주기.
         itemList.Add(new Item(10001, "빨간 포션", "체력을 50 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
-        
+        itemList.Add(new Item(10002, "젤리 젤리", "체력을 1004 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+        itemList.Add(new Item(10003, "노랑 포션", "체력을 50000 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+        itemList.Add(new Item(10004, "보라 포션", "체력을 0 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+        itemList.Add(new Item(10005, "pbl 포션", "체력을 4 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+
     }
 
   
