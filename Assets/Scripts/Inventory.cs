@@ -40,11 +40,11 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
         slots = tf.GetComponentsInChildren<InventorySlot>(); // 부모인 Grid Slot 내의 슬롯들이 저장됨?
 
         // 일단 테스트 .. 실제로는 DB에서 숫자iD 값 찾아서 가져와야 함.
-        inventoryItemList.Add(new Item(10001, "빨간 포션", "체력을 50 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
-        inventoryItemList.Add(new Item(10002, "젤리 젤리", "체력을 1004 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+        inventoryItemList.Add(new Item(10001, "우주복", "속도 +50", Item.ItemType.Use)); // 하나 채운 거임.
+        inventoryItemList.Add(new Item(10002, "젤리", "속도 +100", Item.ItemType.Use)); // 하나 채운 거임.
         inventoryItemList.Add(new Item(10003, "노랑 포션", "체력을 50000 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
-        inventoryItemList.Add(new Item(10004, "보라 포션", "체력을 0 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
-        inventoryItemList.Add(new Item(10005, "pbl 포션", "체력을 4 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+        inventoryItemList.Add(new Item(10004, "주황 포션", "체력을 0 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+        inventoryItemList.Add(new Item(10005, "???", "비밀의 물약", Item.ItemType.Use)); // 하나 채운 거임.
     }
 
     public void RemoveSlot() // 슬롯들이 잠깐 보이지 않도록 ..?
@@ -172,7 +172,7 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
 
         }
         else
-            Description_Text.text = "해당 타입의 아이템을 소유하고 있지 않습니당.";
+            Description_Text.text = "해당 타입의 아이템을 가지고 있지 않습니당.";
     } // 선택된 아이템을 제외하고 다른 모든 탭의 컬러 알파값을 0으로 조정
     IEnumerator SelectedItemEffectCoroutine()
     {
