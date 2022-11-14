@@ -31,11 +31,20 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
 
     private WaitForSeconds waitTime = new WaitForSeconds(0.01f);
     
+
+
     // Start is called before the first frame update
     void Start() {
         inventoryItemList = new List<Item>(); // 생성자 이용해서 리스트 만듦
         inventoryTabList = new List<Item>();
         slots = tf.GetComponentsInChildren<InventorySlot>(); // 부모인 Grid Slot 내의 슬롯들이 저장됨?
+
+        // 일단 테스트 .. 실제로는 DB에서 숫자iD 값 찾아서 가져와야 함.
+        inventoryItemList.Add(new Item(10001, "빨간 포션", "체력을 50 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+        inventoryItemList.Add(new Item(10002, "젤리 젤리", "체력을 1004 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+        inventoryItemList.Add(new Item(10003, "노랑 포션", "체력을 50000 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+        inventoryItemList.Add(new Item(10004, "보라 포션", "체력을 0 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+        inventoryItemList.Add(new Item(10005, "pbl 포션", "체력을 4 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
     }
 
     public void RemoveSlot() // 슬롯들이 잠깐 보이지 않도록 ..?
@@ -209,7 +218,6 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
                     itemActivated = false;
 
                     ShowTab(); // -> 슬롯들 보이지 않게 하고, 탭 빛나도록 하는 함수 호출
-
                 }
                 else // 다시 I 누르면 돌아가도록
                 {
@@ -218,15 +226,12 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
                     tabActivated = false; // 탭 비활성화
                     itemActivated = false;
                     // 그리고 플레이어 이동 가능하도록 했는데 우린 불가 ..
-
                 }
-
-
             }
 
-            if(activated) // 인벤토리가 활성화되었고
+            if (activated) // I 눌러서 인벤토리가 활성화되었고
             {
-                if(tabActivated) // 탭도 활성화된 경우에
+                if (tabActivated) // 탭도 I눌러서 같이 활성화된 경우에
                 {
                     if(Input.GetKeyDown(KeyCode.RightArrow)) // 오른쪽 방향키를 누르는데,
                     {
@@ -259,10 +264,82 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
                         ShowItem();
                     }
 
-                }
+                } // 탭 활성화시 키 입력 처리
 
+                else if (itemActivated)
+                {
+                    if(inventoryTabList.Count > 0)
+                    {
+                        if (Input.GetKeyDown(KeyCode.DownArrow))
+                        {
+                            if (selectedItem < inventoryTabList.Count - 2) // 아래 버튼 누를 경우 +2씩 증가해야 함.
+                                selectedItem += 2;
+                            else
+                                selectedItem %= 2;
+                            SelectedItem(); // 반짝이도록
+
+
+                        }
+                        else if (Input.GetKeyDown(KeyCode.UpArrow))
+                        {
+                            if (selectedItem > 1)
+                                selectedItem -= 2;
+                            else
+                                selectedItem = inventoryTabList.Count - 1 - selectedItem;
+                            SelectedItem(); // 반짝이도록
+                        }
+                        else if (Input.GetKeyDown(KeyCode.RightArrow))
+                        {
+                            if (selectedItem < inventoryTabList.Count - 1)
+                                selectedItem++;
+                            else
+                                selectedItem = 0;
+                            SelectedItem(); // 반짝이도록
+
+                        }
+                        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                        {
+                            if (selectedItem > 0)
+                                selectedItem--;
+                            else
+                                selectedItem = inventoryTabList.Count - 1;
+                            SelectedItem(); // 반짝이도록
+
+                        }
+                        else if (Input.GetKeyDown(KeyCode.Z) && !preventExec) // Z키 중복을 방지??
+                        {
+                            if (selectedTab == 0) // 소모품
+                            {
+                                stopKeyInput = true;
+                                // 물약을 마실 것인지? 같은 선택지 호출
+                            }
+                            else if (selectedTab == 1)
+                            {
+                                // 장비 장착
+                            }
+                            else
+                            {
+                                // 비프음 출력.
+                            }
+
+                        }
+
+                    }
+                    
+                    if (Input.GetKeyDown(KeyCode.X)) // 아이템 고르다가 다시 탭으로 돌아가도록. 취소 키
+                    {
+                        StopAllCoroutines();
+                        itemActivated = false;
+                        tabActivated = true;
+                        ShowTab();
+
+                    }
+                } // 아이템 활성화시 키 입력 처리
+
+                if (Input.GetKeyUp(KeyCode.Z)) // 중복 실행 방지 .. 흠
+                    preventExec = false;
             }
-        }
-        
+        }   
     }
+
 }
