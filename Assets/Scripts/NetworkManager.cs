@@ -74,7 +74,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     
     public void Spawn()
     {
-        PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(107f, 135f), Random.Range(10f, 22f), 0), Quaternion.identity);
+        PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(117f, 145f), Random.Range(13f, 25f), 0), Quaternion.identity);
         MainPanel.SetActive(true);
 
         //darkPanel 비활성화
