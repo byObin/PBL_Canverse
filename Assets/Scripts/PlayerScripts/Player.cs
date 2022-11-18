@@ -5,9 +5,11 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using Cinemachine;
+using static Singleton;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
+    MultiManager MM;
     public PhotonView PV;
     public Text NickNameText;
 
@@ -19,7 +21,23 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     public bool isInAnoZone=false;
     public Transform darkPanel;
-    
+
+    void Init()
+    {
+        MM = FindObjectOfType<MultiManager>();
+        S.SetTag("loadPlayer", true);
+        PV = photonView;
+    }
+
+
+
+    void Start()
+    {
+        Init();
+
+        if (!PV.IsMine) return;
+    }
+
     void Awake()
     {
         // 닉네임
@@ -124,9 +142,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             if (PV.IsMine)
             {
                 Debug.Log("플레이어가 OX 게임구역에 들어옴");
-                GameObject.Find("OXGameZone").transform.Find("OXGameUI").gameObject.SetActive(true); //OX 게임 UI 활성화
-                GameObject.Find("OXGameUI").transform.Find("QuestionPanel").gameObject.SetActive(true); 
+                // GameObject.Find("OXGameZone").transform.Find("OXGameUI").gameObject.SetActive(true); //OX 게임 UI 활성화
+                // GameObject.Find("OXGameUI").transform.Find("QuestionPanel").gameObject.SetActive(true); 
 
+                PhotonNetwork.LoadLevel("OXGameScene");
 
                 GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(false); //전체채팅 ui 비활성화
                 GameObject.Find("MainPanel").transform.Find("ButtonUI").gameObject.SetActive(false); //버튼 ui 비활성화
