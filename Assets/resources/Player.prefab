@@ -161,6 +161,8 @@ MonoBehaviour:
   isInAnoZone: 0
   darkPanel: {fileID: 0}
   OXGameCount: 0
+  boxCollider: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!50 &3791244075598591717
 Rigidbody2D:
   serializedVersion: 4

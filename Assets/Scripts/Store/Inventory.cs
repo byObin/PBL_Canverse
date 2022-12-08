@@ -25,6 +25,7 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
     public GameObject go; // 인벤토리 활성화, 비활성화
     public GameObject[] selectedTabImages; // 네 개의 패널들(탭)
     public GameObject go_OOC; // 선택지 활성화 비활성화
+    public GameObject prefab_Floating_Text;
 
     private int selectedItem; // 선택된 아이템을 정수로 관리할 예정
     private int selectedTab; // 선택된 탭
@@ -58,6 +59,10 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
         {
             if(_itemID == theDatabase.itemList[i].itemID) // DB에서 아이템 발견. 인수로 받은 itemID가 DB에 존재한다면
             {
+                var clone = Instantiate(prefab_Floating_Text, Player.instance.transform.position, Quaternion.Euler(Vector3.zero)); // 플레이어 위치에 저 프리팹을 생성함.
+                clone.GetComponent<FloatingText>().text.text = theDatabase.itemList[i].itemName + " " + _count + "개 획득 +";
+                clone.transform.SetParent(this.transform); // 클론은 인벤토리 내에서 자식 객체로 생성될 것임.
+
                 for(int j = 0; j < inventoryItemList.Count; j++) // 인벤토리에 같은 아이템이 있는지 검색
                 {
                     if (inventoryItemList[j].itemID == _itemID) // 존재한다 -> 개수만 증감시켜줌

@@ -8,6 +8,8 @@ using Cinemachine;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
+    static public Player instance; // 인스턴스로 만듦 -> 다른 스크립트에서 사용할 수 있도록
+
     public PhotonView PV;
     public Text NickNameText;
 
@@ -20,7 +22,25 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public bool isInAnoZone=false;
     public Transform darkPanel;
     public int OXGameCount = 0;
+
+    public BoxCollider2D boxCollider; // 음 ..
+    public Animator animator; // 음 ..
     
+    void Start()
+    {
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            boxCollider = GetComponent<BoxCollider2D>();
+            animator = GetComponent<Animator>();
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     void Awake()
     {
         // 닉네임
