@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour { // 인벤토리 구축
 
+    public static Inventory instance; // 다른 스크립트에서 부르기 위해 인스턴스 생성해야 함.
+
+    private DatabaseManager theDatabase; // 1) 데이터베이스 (아이템?) 변수 선언
+    private OkOrCancel theOOC; // 1) OOC 불러오기 (?)
+
     public string key_sound; // 등등 sound 변수 많았는데 안 하는 걸루 ..
 
     private InventorySlot[] slots; // 인벤토리 슬롯들
@@ -19,6 +24,7 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
 
     public GameObject go; // 인벤토리 활성화, 비활성화
     public GameObject[] selectedTabImages; // 네 개의 패널들(탭)
+    public GameObject go_OOC; // 선택지 활성화 비활성화
 
     private int selectedItem; // 선택된 아이템을 정수로 관리할 예정
     private int selectedTab; // 선택된 탭
@@ -35,16 +41,48 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
 
     // Start is called before the first frame update
     void Start() {
+        instance = this;
+        theDatabase = FindObjectOfType<DatabaseManager>(); // 2) 데이터베이스 매니저 객체 생성
+        theOOC = FindObjectOfType<OkOrCancel>(); // 2) OOC 객체 생성
+
         inventoryItemList = new List<Item>(); // 생성자 이용해서 리스트 만듦
         inventoryTabList = new List<Item>();
         slots = tf.GetComponentsInChildren<InventorySlot>(); // 부모인 Grid Slot 내의 슬롯들이 저장됨?
 
         // 일단 테스트 .. 실제로는 DB에서 숫자iD 값 찾아서 가져와야 함.
-        inventoryItemList.Add(new Item(10001, "우주복", "속도 +50", Item.ItemType.Use)); // 하나 채운 거임.
-        inventoryItemList.Add(new Item(10002, "젤리", "속도 +100", Item.ItemType.Use)); // 하나 채운 거임.
-        inventoryItemList.Add(new Item(10003, "노랑 포션", "체력을 50000 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
-        inventoryItemList.Add(new Item(10004, "주황 포션", "체력을 0 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
-        inventoryItemList.Add(new Item(10005, "???", "비밀의 물약", Item.ItemType.Use)); // 하나 채운 거임.
+    }
+
+    public void GetAnItem(int _itemID, int _count = 1) // 아이템 얻을 때 기본값이 1이니까 ..
+    {
+        for(int i = 0; i < theDatabase.itemList.Count; i++) // DB에서 아이템 검색. 리스트만큼 돌기
+        {
+            if(_itemID == theDatabase.itemList[i].itemID) // DB에서 아이템 발견. 인수로 받은 itemID가 DB에 존재한다면
+            {
+                for(int j = 0; j < inventoryItemList.Count; j++) // 인벤토리에 같은 아이템이 있는지 검색
+                {
+                    if (inventoryItemList[j].itemID == _itemID) // 존재한다 -> 개수만 증감시켜줌
+                    {
+                        if (inventoryItemList[j].itemType == Item.ItemType.Use) // 아이템 type이 소모품일 경우에만
+                        {
+                            inventoryItemList[j].itemCount += _count; // 얻은 개수만큼 증가시키기 (디폴트: 1)
+                            return;
+                        }
+                        else // 소모품 이외의 아이템 타입이라면 슬롯만 늘어나는 걸로
+                        {
+                            inventoryItemList.Add(theDatabase.itemList[i]); // for문 돌아서 검색했는데도 없다면, 인벤토리에 새로 추가해주기
+                        }
+                        return;
+                   
+                    }
+                }
+                inventoryItemList.Add(theDatabase.itemList[i]); // for문 돌아서 검색했는데도 없다면, 인벤토리에 새로 추가해주기
+                inventoryItemList[inventoryItemList.Count - 1].itemCount = _count; // 개수 텍스트도 바꾸기??? 이게 왜 버그지
+                return;
+            }
+
+        }
+        Debug.LogError("데이터베이스에 해당 ID 값을 가진 아이템이 존재하지 않습니다."); // DB에 ItemID 없음
+
     }
 
     public void RemoveSlot() // 슬롯들이 잠깐 보이지 않도록 ..?
@@ -142,9 +180,6 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
                         inventoryTabList.Add(inventoryItemList[i]); // 추가해줌.
                 }
                 break;
-
-
-
         } // 탭에 따른 아이템 분류, 그것을 인벤토리 탭 리스트에 추가
 
         // 인벤토리 탭 리스트의 내용을, 인벤토리 슬롯에 추가
@@ -172,8 +207,9 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
 
         }
         else
-            Description_Text.text = "해당 타입의 아이템을 가지고 있지 않습니당.";
+            Description_Text.text = "해당 타입의 아이템을 가지고 있지 않습니다.";
     } // 선택된 아이템을 제외하고 다른 모든 탭의 컬러 알파값을 0으로 조정
+
     IEnumerator SelectedItemEffectCoroutine()
     {
         while (itemActivated) // 아이템이 활성화되어 있다면, 계속 빛나도록
@@ -311,6 +347,7 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
                             if (selectedTab == 0) // 소모품
                             {
                                 stopKeyInput = true;
+                                StartCoroutine(OOCCoroutine()); // OOC 코루틴 시작 ............ 
                                 // 물약을 마실 것인지? 같은 선택지 호출
                             }
                             else if (selectedTab == 1)
@@ -340,6 +377,39 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
                     preventExec = false;
             }
         }   
+    }
+
+    IEnumerator OOCCoroutine()
+    {
+        go_OOC.SetActive(true);
+        theOOC.ShowTwoChoice("사용", "취소"); // OOC 스크립트에 함수 정의되어 있음
+        yield return new WaitUntil(() => !theOOC.activated); // theOOC의 activated가 false가 될 때까지 대기 ..?
+        if(theOOC.GetResult()) // GetResult()가 True인 경우. 즉 사용된 경우!
+        {
+            for(int i = 0; i < inventoryItemList.Count; i++) // 리스트에서 하나 없애야함. 사용했으니까.
+            {
+                if (inventoryItemList[i].itemID == inventoryTabList[selectedItem].itemID)
+                {
+                    theDatabase.UseItem(inventoryItemList[i].itemID); // 아이템 빠지기 전에, UseItem()하기 ! DB 스크립트에 정의되어있음.
+
+                    if (inventoryItemList[i].itemCount > 1)
+                        inventoryItemList[i].itemCount--;
+                    else
+                        inventoryItemList.RemoveAt(i); // 아이템 지움
+
+                    
+                    ShowItem();
+                    break;
+                }
+                
+
+
+            }
+        }
+
+        stopKeyInput = false;
+        go_OOC.SetActive(false);
+
     }
 
 }
