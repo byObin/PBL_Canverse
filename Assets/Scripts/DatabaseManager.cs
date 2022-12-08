@@ -29,10 +29,22 @@ public class DatabaseManager : MonoBehaviour // 싱글톤화가 되어 있어야 함.
 
     public List<Item> itemList = new List<Item>(); // 아이템 리스트 생성. 
 
+    public void UseItem(int _itemID) // 아이템 ID별로 사용되었을 때 효과 정의 (여기에 캐릭터 바꾸고 이럼 될 듯)
+    {
+        switch(_itemID)
+        {
+            case 10001:
+                Debug.Log("hp가 50 회복되었습니다.");
+                break;
+            case 10002:
+                break;
+        }
+    }
+
     void Start()
     {
         // 아이템을 직접 구현하고, 아이템을 DB에 추가해주기.
-        itemList.Add(new Item(10001, "빨간 포션", "체력을 50 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
+        itemList.Add(new Item(10001, "gem", "숨어있는 gem을 잘 찾아보세요!", Item.ItemType.Use)); // 하나 채운 거임.
         itemList.Add(new Item(10002, "젤리 젤리", "체력을 1004 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
         itemList.Add(new Item(10003, "노랑 포션", "체력을 50000 채워주는 물약", Item.ItemType.Use)); // 하나 채운 거임.
         itemList.Add(new Item(10004, "보라 포션", "체력을 0 채워주는 물약", Item.ItemType.Equip)); // 하나 채운 거임.

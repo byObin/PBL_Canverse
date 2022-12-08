@@ -29,7 +29,6 @@ public class Item {
         itemDescription = _itemDes;
         itemType = _itemType;
         itemCount = _itemCount; // 따로 채워지지 않는 이상 1로 설정
-        
         itemIcon = Resources.Load("ItemIcon/" + _itemID.ToString(), typeof(Sprite)) as Sprite; // Resources 폴더에서 가져옴. as Sprite로 캐스팅하여 실제로 변환.
     }
 
