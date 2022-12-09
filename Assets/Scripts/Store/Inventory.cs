@@ -59,9 +59,9 @@ public class Inventory : MonoBehaviour { // 인벤토리 구축
         {
             if(_itemID == theDatabase.itemList[i].itemID) // DB에서 아이템 발견. 인수로 받은 itemID가 DB에 존재한다면
             {
-                var clone = Instantiate(prefab_Floating_Text, Player.instance.transform.position, Quaternion.Euler(Vector3.zero)); // 플레이어 위치에 저 프리팹을 생성함.
-                clone.GetComponent<FloatingText>().text.text = theDatabase.itemList[i].itemName + " " + _count + "개 획득 +";
-                clone.transform.SetParent(this.transform); // 클론은 인벤토리 내에서 자식 객체로 생성될 것임.
+                // var clone = Instantiate(prefab_Floating_Text, Player.instance.transform.position, Quaternion.Euler(Vector3.zero)); // 플레이어 위치에 저 프리팹을 생성함.
+                // clone.GetComponent<FloatingText>().text.text = theDatabase.itemList[i].itemName + " " + _count + "개 획득 +";
+                // clone.transform.SetParent(this.transform); // 클론은 인벤토리 내에서 자식 객체로 생성될 것임.
 
                 for(int j = 0; j < inventoryItemList.Count; j++) // 인벤토리에 같은 아이템이 있는지 검색
                 {

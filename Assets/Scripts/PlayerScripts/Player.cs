@@ -8,7 +8,7 @@ using Cinemachine;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
-    static public Player instance; // 인스턴스로 만듦 -> 다른 스크립트에서 사용할 수 있도록
+    // static public Player instance; // 인스턴스로 만듦 -> 다른 스크립트에서 사용할 수 있도록
 
     public PhotonView PV;
     public Text NickNameText;
@@ -26,7 +26,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public BoxCollider2D boxCollider; // 음 ..
     public Animator animator; // 음 ..
     
-    void Start()
+    /*void Start()
     {
         if (instance == null)
         {
@@ -39,7 +39,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             Destroy(this.gameObject);
         }
-    }
+    }*/
 
     void Awake()
     {
