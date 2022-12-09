@@ -210,7 +210,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 Debug.Log("플레이어가 게임구역에서 나감");
                 GameObject.Find("MainPanel").transform.Find("Else_GameZone").gameObject.SetActive(false); //다크패널 비활성화
                 
-                GameObject.Find("MainPanel").transform.Find("OXGameUI").gameObject.SetActive(false); //OXGame UI 비활성화
+                //GameObject.Find("MainPanel").transform.Find("OXGameUI").gameObject.SetActive(false); //OXGame UI 비활성화
                
                 GameObject.Find("MainPanel").transform.Find("ButtonUI").gameObject.SetActive(true); //버튼 ui 활성화
                 GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(true); //채팅 ui 활성화
