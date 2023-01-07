@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;   
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
@@ -192,6 +193,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             {
                 Debug.Log("스토리 이동 버튼과 충돌");
                 GameObject.Find("MainPanel").transform.Find("DarkPanel").transform.Find("Else_MoveToStoryZone").gameObject.SetActive(true); //다크패널 활성화
+                SceneManager.LoadScene("Village");
             }
         }
 
