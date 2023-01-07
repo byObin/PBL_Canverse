@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StoryGame/Village.unity
     guid: 167840f5f3167c2429568d24786b9e30
+  - enabled: 1
+    path: Assets/Scenes/StoryGame/Friend'sHouse.unity
+    guid: fe40893f5205cc14dbef2f834a5dff6a
+  - enabled: 1
+    path: Assets/Scenes/StoryGame/TownOffice.unity
+    guid: 0034087257d3fc64585e53e10438bc88
+  - enabled: 1
+    path: Assets/Scenes/StoryGame/Museum.unity
+    guid: 8c6dc2ce62f38be46be60325a2fb035a
+  - enabled: 1
+    path: Assets/Scenes/StoryGame/Library.unity
+    guid: 890a935d812fba34fb6b27337cc85e8b
   m_configObjects: {}
