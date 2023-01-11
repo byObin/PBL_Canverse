@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PV: {fileID: 6298047522840344616}
   NickNameText: {fileID: 611049304608320464}
+  NetworkManager: {fileID: 0}
   moveSpeed: 8.5
   isInAnoZone: 0
   darkPanel: {fileID: 0}

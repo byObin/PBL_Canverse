@@ -13,6 +13,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     public PhotonView PV;
     public Text NickNameText;
+    public GameObject NetworkManager;
 
     [SerializeField] [Range(1f, 10f)] float moveSpeed = 10f; // Inspector에서 스피드 조절 가능
     SpriteRenderer rend; // 이미지 좌우반전용 변수 rend
@@ -107,10 +108,17 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
             transform.Translate(flipMove * Time.deltaTime * moveSpeed);
         }
-
         // IsMine이 아닌 것들은 부드럽게 위치 동기화
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
         else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
+
+        if (isInAnoZone)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                GameObject.Find("NetworkManager").GetComponent<NetworkManager>().AnoSend();
+            }
+        }
     }
 
     //충돌처리 : 플레이어가 특정 구역 입장 시
@@ -127,6 +135,9 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
                 GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(false); //전체채팅 ui 비활성화
                 GameObject.Find("MainPanel").transform.Find("AnoChattingUI").gameObject.SetActive(true); //익명채팅 ui 활성화
+
+                isInAnoZone=true;
+
             }
         }
 
@@ -214,6 +225,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
                 GameObject.Find("MainPanel").transform.Find("ChattingUI").gameObject.SetActive(true); //전체채팅 ui 활성화
                 GameObject.Find("MainPanel").transform.Find("AnoChattingUI").gameObject.SetActive(false); //익명채팅 ui 비활성화
+
+                isInAnoZone = false;
             }
         }
 
@@ -315,11 +328,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-
-  
-        
-
-  
 
 }
 

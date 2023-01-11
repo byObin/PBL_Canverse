@@ -101,8 +101,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         TextInput.text = "";
     }
 
-    //전체 채팅 구현
-    [PunRPC] 
+  
+        //전체 채팅 구현
+        [PunRPC] 
     void ChatRPC(string msg)
     {
         bool isInput = false;
@@ -122,6 +123,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
     }
 
+    
     //익명 채팅 보내기 버튼
     public void AnoSend()
     {
@@ -133,6 +135,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         AnoTextInput.text = "";
         PhotonNetwork.LocalPlayer.NickName = NickName;
     }
+    
 
     //익명 채팅 구현
     [PunRPC] 
@@ -172,6 +175,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         chatterUpdate();
         if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect();
+        if (Input.GetKeyDown(KeyCode.Return)) Send();
 
     }
 
