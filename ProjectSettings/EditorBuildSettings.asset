@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StoryGame/Library.unity
     guid: 890a935d812fba34fb6b27337cc85e8b
+  - enabled: 1
+    path: Assets/Scenes/StoryGame/Intro_Description.unity
+    guid: f2e1b55b6764dd844b763c6f07384915
   m_configObjects: {}
