@@ -8,49 +8,61 @@ public class Story_Player : MonoBehaviour
 
     public float speed = 5;
 
-    void Update()   // Å°º¸µå ¹æÇâÅ°¿¡ µû¶ó ÇÃ·¹ÀÌ¾î ÀÌµ¿
+    void Update()   // Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ìµï¿½
     {
         float posX = Input.GetAxisRaw("Horizontal");    //keybord input
         float posY = Input.GetAxisRaw("Vertical");         //keybord input
 
-
         transform.Translate(new Vector2(posX, posY) * Time.deltaTime * speed);
-
     }
 
 
-    //Ãæµ¹Ã³¸® : ÇÃ·¹ÀÌ¾î°¡ °Ç¹° ¹®°ú Ãæµ¹ ½Ã
+    //ï¿½æµ¹Ã³ï¿½ï¿½ : ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ç¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ ï¿½ï¿½
     void OnTriggerEnter2D(Collider2D collider)
     {
 
-        //µµ¼­°ü ¹® Ãæµ¹ ½Ã Library SceneÀ¸·Î ÀÌµ¿
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½æµ¹ ï¿½ï¿½ Library Sceneï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         if (collider.gameObject.name == "LibDoor")
         {
-             Debug.Log("µµ¼­°ü ¹®¿¡ Ãæµ¹");
+             Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹");
              SceneManager.LoadScene("Library");
         }
 
-        //¹Ú¹°°ü ¹® Ãæµ¹ ½Ã Museum SceneÀ¸·Î ÀÌµ¿
+        //ï¿½Ú¹ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½æµ¹ ï¿½ï¿½ Museum Sceneï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         if (collider.gameObject.name == "MusDoor")
         {
-            Debug.Log("¹Ú¹°°ü ¹®¿¡ Ãæµ¹");
+            Debug.Log("ï¿½Ú¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹");
             SceneManager.LoadScene("Museum");
         }
 
-        //µ¿»ç¹«¼Ò ¹® Ãæµ¹ ½Ã TownOffice SceneÀ¸·Î ÀÌµ¿
+        //ï¿½ï¿½ï¿½ç¹«ï¿½ï¿½ ï¿½ï¿½ ï¿½æµ¹ ï¿½ï¿½ TownOffice Sceneï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         if (collider.gameObject.name == "OffiDoor")
         {
-            Debug.Log("µ¿»ç¹«¼Ò ¹®¿¡ Ãæµ¹");
+            Debug.Log("ï¿½ï¿½ï¿½ç¹«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹");
             SceneManager.LoadScene("TownOffice");
         }
 
-        //Ä£±¸ Áı ¹® Ãæµ¹ ½Ã Friend'sHouse SceneÀ¸·Î ÀÌµ¿
+        //Ä£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½æµ¹ ï¿½ï¿½ Friend'sHouse Sceneï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         if (collider.gameObject.name == "FirDoor")
         {
-            Debug.Log("Ä£±¸ Áı ¹®¿¡ Ãæµ¹");
-            SceneManager.LoadScene("Friend'sHouse");
+            GameObject.Find("Friend'sHouse").transform.Find("Canvas").transform.Find("DoorlockPanel").gameObject.SetActive(true);
+
+
+
+
+
+            // Debug.Log("Ä£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹");
+            // SceneManager.LoadScene("Friend'sHouse");
         }
 
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.name == "FirDoor") // ë‹¤ì‹œ ì¹œêµ¬ ì§‘ ë¬¸ì— ë¶€ë”ªíˆë©´ ë„ì–´ë½ íŒ¨ë„ ë¹„í™œì„±í™”
+        {
+            GameObject.Find("Friend'sHouse").transform.Find("Canvas").transform.Find("DoorlockPanel").gameObject.SetActive(false);
+        }
     }
 
 
