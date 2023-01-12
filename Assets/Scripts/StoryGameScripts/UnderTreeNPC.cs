@@ -6,7 +6,7 @@ public class UnderTreeNPC : MonoBehaviour
 {
     public GameObject npcChatPanel;
 
-    void Update()
+    /*void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -14,10 +14,11 @@ public class UnderTreeNPC : MonoBehaviour
             npcChatPanel.SetActive(true);
             
         }
-    }
+    }*/
 
-    void buttonclick()
+    void OnMouseDown()
     {
-        npcChatPanel.SetActive(false);
+        Debug.Log("npc is clicked");
+        npcChatPanel.SetActive(true);
     }
 }

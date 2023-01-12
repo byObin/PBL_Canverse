@@ -433,6 +433,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &204225252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204225253}
+  m_Layer: 5
+  m_Name: npc chat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &204225253
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204225252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 574602351}
+  - {fileID: 1361236409}
+  m_Father: {fileID: 1184817742}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &237097182
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +483,7 @@ GameObject:
   - component: {fileID: 237097185}
   - component: {fileID: 237097184}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: dialogueTXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -594,7 +632,7 @@ GameObject:
   - component: {fileID: 574602353}
   - component: {fileID: 574602352}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: NPCnicknamePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -607,19 +645,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574602350}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 592444383}
-  m_Father: {fileID: 1184817742}
-  m_RootOrder: 1
+  m_Father: {fileID: 204225253}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -465.07, y: 0}
-  m_SizeDelta: {x: -1414.6416, y: -953.1812}
+  m_AnchoredPosition: {x: -465.07007, y: 0}
+  m_SizeDelta: {x: 405.3584, y: 26.818787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &574602352
 MonoBehaviour:
@@ -1388,8 +1426,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1361236409}
-  - {fileID: 574602351}
+  - {fileID: 204225253}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1495,7 +1532,7 @@ GameObject:
   - component: {fileID: 1361236411}
   - component: {fileID: 1361236410}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: NPCchatPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1508,20 +1545,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361236408}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 237097183}
   - {fileID: 1382826055}
-  m_Father: {fileID: 1184817742}
-  m_RootOrder: 0
+  m_Father: {fileID: 204225253}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -49, y: -314}
-  m_SizeDelta: {x: -582.4994, y: -703.5385}
+  m_SizeDelta: {x: 1237.5006, y: 276.4615}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1361236410
 MonoBehaviour:
@@ -1574,7 +1611,7 @@ GameObject:
   - component: {fileID: 1382826057}
   - component: {fileID: 1382826056}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: OKbtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1644,7 +1681,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1382826057}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204225252}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1382826057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1907,7 +1956,7 @@ GameObject:
   - component: {fileID: 1674670791}
   - component: {fileID: 1674670790}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: OKtxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12298,6 +12347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b56c7e4d6d8f5e47a3e84d8d74c5ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcChatPanel: {fileID: 204225252}
 --- !u!50 &1901105705
 Rigidbody2D:
   serializedVersion: 4
