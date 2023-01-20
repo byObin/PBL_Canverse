@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Sample_Player_Move : MonoBehaviour
 {
+    static public Sample_Player_Move instance; // 자기 자신을 값으로 받는 인스턴스
+
     public float moveSpeed = 5;
     private Animator anim;
     public GameObject mapPanel;
@@ -14,16 +16,21 @@ public class Sample_Player_Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject); // 추가
-        boxCollider = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>(); // 추가
+        if (instance == null) // 인스턴스가 처음 생성될 때만
+        {
+            DontDestroyOnLoad(this.gameObject); // 씬 전환 시 사라지지 않도록
+            boxCollider = GetComponent<BoxCollider2D>();
+            anim = GetComponent<Animator>();
+            instance = this;
+        }
+        else // 그 다음에 생성되는 플레이어는 파기
+            Destroy(this.gameObject);
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-
         if (Input.GetAxisRaw("Horizontal") > 0f || Input.GetAxisRaw("Horizontal") < 0f)
         {
             transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f));

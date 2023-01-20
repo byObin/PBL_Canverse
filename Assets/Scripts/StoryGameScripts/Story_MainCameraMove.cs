@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Story_MainCameraMove : MonoBehaviour
 {
+    static public Story_MainCameraMove instance;
+
     public GameObject target;
     public float moveSpeed;
     private Vector3 targetPosition;
@@ -14,7 +16,17 @@ public class Story_MainCameraMove : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (instance != null)
+        {
+            Destroy(this.gameObject); // 货肺 积己等 按眉绰 颇扁
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+
+        }
+        
     }
 
     void Update()
