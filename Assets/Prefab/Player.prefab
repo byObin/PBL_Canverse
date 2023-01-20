@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8010323250769891024}
   - component: {fileID: 9109261310884882701}
   m_Layer: 0
-  m_Name: Premade_Character_03_3
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
