@@ -11500,9 +11500,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Premade_Character_03_531: 1176564768
-      Premade_Character_03_151: -743185324
-      Premade_Character_03_229: 1999101300
-      Premade_Character_03_379: -637652122
+      Premade_Character_03_126: -759880799
+      Premade_Character_03_208: 1616079221
+      Premade_Character_03_300: 910481800
       Premade_Character_03_442: -1754096625
       Premade_Character_03_58: 233972798
       Premade_Character_03_392: -445777011
@@ -11635,8 +11635,8 @@ TextureImporter:
       Premade_Character_03_526: 1731247247
       Premade_Character_03_334: -595400879
       Premade_Character_03_16: -2123828679
-      Premade_Character_03_316: 1524352033
       Premade_Character_03_532: -1109362974
+      Premade_Character_03_316: 1524352033
       Premade_Character_03_77: -864514930
       Premade_Character_03_119: 2084767416
       Premade_Character_03_387: -2093157870
@@ -11767,10 +11767,10 @@ TextureImporter:
       Premade_Character_03_516: -1502860522
       Premade_Character_03_184: 1684669464
       Premade_Character_03_331: 61795050
-      Premade_Character_03_131: -2102095991
       Premade_Character_03_217: 1718431660
-      Premade_Character_03_369: -2098747326
       Premade_Character_03_533: 1245250206
+      Premade_Character_03_369: -2098747326
+      Premade_Character_03_131: -2102095991
       Premade_Character_03_269: 1930001712
       Premade_Character_03_455: 653044237
       Premade_Character_03_426: -1366164327
@@ -12033,13 +12033,13 @@ TextureImporter:
       Premade_Character_03_313: -1249931029
       Premade_Character_03_494: -2044914799
       Premade_Character_03_374: -146162028
-      Premade_Character_03_208: 1616079221
-      Premade_Character_03_470: -238113757
-      Premade_Character_03_126: -759880799
-      Premade_Character_03_200: -762197624
-      Premade_Character_03_300: 910481800
-      Premade_Character_03_473: -1498232291
       Premade_Character_03_36: -2112165868
+      Premade_Character_03_229: 1999101300
+      Premade_Character_03_200: -762197624
+      Premade_Character_03_151: -743185324
+      Premade_Character_03_470: -238113757
+      Premade_Character_03_473: -1498232291
+      Premade_Character_03_379: -637652122
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
