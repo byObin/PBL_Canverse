@@ -8,12 +8,15 @@ public class Sample_Player_Move : MonoBehaviour
     public float moveSpeed = 5;
     private Animator anim;
     public GameObject mapPanel;
+    private BoxCollider2D boxCollider; // 추가
 
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        DontDestroyOnLoad(this.gameObject); // 추가
+        boxCollider = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>(); // 추가
     }
 
     // Update is called once per frame

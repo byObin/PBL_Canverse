@@ -17866,6 +17866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6588750940708547365, guid: a34987e61156a2d448d8b57a7b111cb8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8010323250769891024, guid: a34987e61156a2d448d8b57a7b111cb8, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -18059,7 +18063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1073878970
 AudioListener:
   m_ObjectHideFlags: 0
@@ -18139,6 +18143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 965315348}
+  moveSpeed: 0
   offsetX: 0
   offsetY: 0
   offsetZ: -10

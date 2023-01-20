@@ -3167,6 +3167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1731020655}
+  moveSpeed: 3
   offsetX: 0
   offsetY: 0
   offsetZ: -10
