@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class UnderTreeNPC : MonoBehaviour
 {
     public GameObject npcChat;
-    public GameObject pdQuestion;
-    public GameObject OKBtn;
     public Text dialogueTxt;
+    public GameObject pdBtn;
+    public GameObject okBtn;
+    public GameObject pdPanel;
 
     public int ChatCount = 0;
 
@@ -25,16 +26,19 @@ public class UnderTreeNPC : MonoBehaviour
         {
             npcChat.SetActive(true);
             dialogueTxt.text = "내가 잃어버렸던 열쇠를 찾았구나. 정말 고마워! 우리 집에서 환영 파티를 해 줄게." +
-                "집 비밀번호를 알 수 있는 문제를 맞춰 봐!";
-            OKBtn.SetActive(false);
-            pdQuestion.SetActive(true);
+                "집 비밀번호와 관련된 힌트를 알려줄게!";
+            pdBtn.SetActive(true);
+
             ChatCount++;
+        }
+
+        else if (ChatCount == 2)
+        {
+            pdPanel.SetActive(true);
         }
     }
 
-    // 조력자 집 비밀번호 문제 풀기
-    public void pdQ()
-    {
-
-    }
+   
 }
+
+
