@@ -52,6 +52,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Buildings
-    uniqueID: 2665531789
+  - name: New Layer 1
+    uniqueID: 2043075225
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 3035048607
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 1883110691
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 2180400161
+    locked: 0
+  - name: UI
+    uniqueID: 3662660359
     locked: 0
