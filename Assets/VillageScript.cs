@@ -8,7 +8,7 @@ public class VillageScript : MonoBehaviour
     public GameObject pdPanel;
     public GameObject npcChat;
     public GameObject pdBtn;
-
+    /*
     void Start()
     {
         PanelFirstMsg.SetActive(true);
@@ -19,5 +19,5 @@ public class VillageScript : MonoBehaviour
         pdPanel.SetActive(true);
         npcChat.SetActive(false);
         pdBtn.SetActive(false);
-    }
+    }*/
 }
