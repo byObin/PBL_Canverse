@@ -9095,6 +9095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transferMapName: Village
+  player: {fileID: 6588750940708547365, guid: a34987e61156a2d448d8b57a7b111cb8, type: 3}
 --- !u!4 &1181937326
 Transform:
   m_ObjectHideFlags: 0
