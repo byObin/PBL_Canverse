@@ -72,18 +72,23 @@ public class Sample_Player_Move : MonoBehaviour
         if (collider.gameObject.name == "LibDoor")
         {
             SceneManager.LoadScene("Library");
+            gameObject.transform.position = new Vector3(28.3f, -11.77f, -6);
         }
 
         //Museum Scene
         if (collider.gameObject.name == "MusDoor")
         {
             SceneManager.LoadScene("Museum");
+            gameObject.transform.position = new Vector3(2.326f, -34.8f, 0);
+
         }
 
         //TownOffice Scene
         if (collider.gameObject.name == "OffiDoor")
         {
             SceneManager.LoadScene("TownOffice");
+            gameObject.transform.position = new Vector3(-9.58f, -11.57f, 0);
+
         }
 
         //Friend'sHouse Scene

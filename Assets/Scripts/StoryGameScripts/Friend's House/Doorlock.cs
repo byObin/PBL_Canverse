@@ -9,6 +9,7 @@ public class Doorlock : MonoBehaviour
 {
     public InputField Password_InputField;
     public Button Password_Button;
+    public GameObject player;
 
     private string password = "1234"; // 임의 변수
 
@@ -20,6 +21,7 @@ public class Doorlock : MonoBehaviour
             Debug.Log("친구 집 내부로 이동");
             GameObject.Find("Friend'sHouse").transform.Find("Canvas").transform.Find("DoorlockPanel").gameObject.SetActive(false);
             SceneManager.LoadScene("Friend'sHouse");
+            player.transform.position = new Vector3(3.519f, -18.3f, 0);
 
 
         }
