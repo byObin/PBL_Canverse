@@ -9,10 +9,11 @@ public class Sample_Player_Move : MonoBehaviour
 
     public float moveSpeed = 5;
     private Animator anim;
-    public GameObject mapPanel;
     private BoxCollider2D boxCollider; // Ãß°¡
 
     public bool didPlayerReadFirstMsg = false;
+
+    public bool mapIsClicked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -57,8 +58,10 @@ public class Sample_Player_Move : MonoBehaviour
                 Debug.Log("touched Object is " + touchedObject);
                 if (touchedObject.name == "MapItem")
                 {
-                    mapPanel.SetActive(true);
+                    mapIsClicked = true;
                 }
+
+
             }
 
         }

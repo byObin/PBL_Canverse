@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 245427919}
   - component: {fileID: 245427918}
   - component: {fileID: 245427920}
+  - component: {fileID: 245427921}
   m_Layer: 0
   m_Name: MapItem
   m_TagString: Untagged
@@ -314,6 +315,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &245427921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245427917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed1770988ef0744892bbad160fd2d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapPanel: {fileID: 832084114}
 --- !u!1 &475165169
 GameObject:
   m_ObjectHideFlags: 0
@@ -9095,7 +9109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transferMapName: Village
-  player: {fileID: 6588750940708547365, guid: a34987e61156a2d448d8b57a7b111cb8, type: 3}
 --- !u!4 &1181937326
 Transform:
   m_ObjectHideFlags: 0
