@@ -12,6 +12,7 @@ public class Sample_Player_Move : MonoBehaviour
     public GameObject mapPanel;
     private BoxCollider2D boxCollider; // Ãß°¡
 
+    public bool didPlayerReadFirstMsg = false;
 
     // Start is called before the first frame update
     void Start()

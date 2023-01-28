@@ -11,23 +11,14 @@ public class First_Msg_Panel : MonoBehaviour
 
     public Button panelOkBtn;
     public GameObject FirstMsgPanel;
-    public bool firstMsgIsPrinted = false;
 
 
     void Start()
     {
-        /*if (instance == null) // 인스턴스가 처음 생성될 때만
-        {
-            DontDestroyOnLoad(this.gameObject); // 씬 전환 시 사라지지 않도록
-            instance = this;
-        }
-        else // 그 다음에 생성되는 플레이어는 파기
-            Destroy(this.gameObject);*/
 
-        if (firstMsgIsPrinted == false)
+        if (GameObject.Find("Player").GetComponent<Sample_Player_Move>().didPlayerReadFirstMsg == true)
         {
-            FirstMsgPanel.SetActive(true);
-
+            FirstMsgPanel.SetActive(false);
         }
         panelOkBtn.onClick.AddListener(activeoff);
     }
@@ -35,8 +26,8 @@ public class First_Msg_Panel : MonoBehaviour
     void activeoff()
     {
         FirstMsgPanel.SetActive(false);
-        firstMsgIsPrinted = true;
+        GameObject.Find("Player").GetComponent<Sample_Player_Move>().didPlayerReadFirstMsg = true;
     }
 
-    
+
 }
