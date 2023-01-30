@@ -5,7 +5,7 @@ using UnityEngine;
 public class TestDialogue : MonoBehaviour
 {
     [SerializeField]
-    public Dialogue dialogue;
+    public Dialogue dialogue; // String ¸®½ºÆ®
     private DialogueManager theDM;
 
     // Start is called before the first frame update
