@@ -12,6 +12,7 @@ public class Sample_Player_Move : MonoBehaviour
     private BoxCollider2D boxCollider; // Ãß°¡
 
     public bool didPlayerReadFirstMsg = false;
+    public bool didPlayerTalkNPC = false;
 
     public bool mapIsClicked = false;
 

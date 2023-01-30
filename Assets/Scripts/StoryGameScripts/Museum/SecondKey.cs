@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class SecondKey : MonoBehaviour
 {
-    public GameObject npcChat;
+    public GameObject npcChat; 
+    public GameObject secondKey;
     public Text NicknameTxt;
     public Text dialogueTxt;
 
@@ -15,5 +16,6 @@ public class SecondKey : MonoBehaviour
         npcChat.SetActive(true);
         NicknameTxt.text = "나";
         dialogueTxt.text = "열쇠를 또 찾았네! 이게 마지막 열쇠인 것 같아. 큐레이터 님께 가져다 드려야지!";
+        secondKey.SetActive(false);
     }
 }

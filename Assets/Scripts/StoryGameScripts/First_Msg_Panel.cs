@@ -28,6 +28,4 @@ public class First_Msg_Panel : MonoBehaviour
         FirstMsgPanel.SetActive(false);
         GameObject.Find("Player").GetComponent<Sample_Player_Move>().didPlayerReadFirstMsg = true;
     }
-
-
 }

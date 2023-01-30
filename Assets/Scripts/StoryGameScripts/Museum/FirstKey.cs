@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class FirstKey : MonoBehaviour
 {
     public GameObject npcChat;
+    public GameObject firstKey;
     public Text NicknameTxt;
     public Text dialogueTxt;
 
@@ -14,6 +15,7 @@ public class FirstKey : MonoBehaviour
     {
         npcChat.SetActive(true);
         NicknameTxt.text = "나";
-        dialogueTxt.text = "열쇠를 찾았다! 혹시 모르니 조금 더 찾아봐야지!";
+        dialogueTxt.text = "열쇠를 찾았다! 혹시 모르니 조금 더 찾아볼까?";
+        firstKey.SetActive(false);
     }
 }

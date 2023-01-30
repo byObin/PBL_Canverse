@@ -41951,6 +41951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcChat: {fileID: 11725590}
+  secondKey: {fileID: 461726828}
   NicknameTxt: {fileID: 1301031106}
   dialogueTxt: {fileID: 1806665890}
 --- !u!1 &668324770
@@ -75595,6 +75596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcChat: {fileID: 11725590}
+  firstKey: {fileID: 1983324614}
   NicknameTxt: {fileID: 1301031106}
   dialogueTxt: {fileID: 1806665890}
 --- !u!70 &1983324618
